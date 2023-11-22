@@ -8,6 +8,8 @@ function StalactitePlot({ hierarchical_data }) {
       (svg) => {
         const width = 1200;
         const height = 900;
+
+        const yScale = 8;
       
         // Create the color scale.
         // const color = d3.scaleOrdinal(d3.quantize(d3.interpolateHslLong(d3.color("hsl(39, 50%, 75%)"), d3.color("hsl(300, 50%, 50%)")), hierarchical_data.children.length + 2));
@@ -24,10 +26,11 @@ function StalactitePlot({ hierarchical_data }) {
           (hierarchy);
 
         svg
-            .attr("viewBox", [0, 0, width, height+400])
+            .attr("viewBox", [0, 0, width, height])
             .attr("width", width)
-            .attr("height", height+400)
-            .attr("style", "max-width: 100%; height: auto; font: 10px sans-serif;");
+            .attr("height", height)
+            .attr("style", "max-width: 75%; height: auto; font: 10px sans-serif")
+            // .attr("transform", "scaleY(0.3)");
     
         /*
         This line is needed so that we can calculate the length of the text labels
@@ -49,7 +52,7 @@ function StalactitePlot({ hierarchical_data }) {
             .attr("transform", d => `translate(${d.x0},${d.y0})`);
         
         const rect = cell.append("rect")
-            .attr("height", d => {return rectHeight(d)*10-1})
+            .attr("height", d => {return rectHeight(d)*yScale-1})
             .attr("width", d => rectWidth(d)-1)
             .attr("fill", d => {
             if (!d.depth) return color(0);
@@ -63,8 +66,8 @@ function StalactitePlot({ hierarchical_data }) {
         const line = cell.filter(function(d) {return d.children}).append("line")
             .attr("x1", 0)
             .attr("x2", d => rectWidth(d))
-            .attr("y1", d => 2*rectHeight(d)*10)
-            .attr("y2", d => 2*rectHeight(d)*10)
+            .attr("y1", d => 2*rectHeight(d)*yScale)
+            .attr("y2", d => 2*rectHeight(d)*yScale)
             .style("stroke-width", 8)
             // .style("stroke-dasharray", ("3, 3"))
             .attr("stroke", d => {
@@ -77,8 +80,8 @@ function StalactitePlot({ hierarchical_data }) {
         const inner_node_line = cell.filter(function(d) {return d.children && d.parent}).append("line")
             .attr("x1", 0)
             .attr("x2", d => rectWidth(d))
-            .attr("y1", d => (rectHeight(d) + rectHeight(d.parent))*10)
-            .attr("y2", d => (rectHeight(d) + rectHeight(d.parent))*10)
+            .attr("y1", d => (rectHeight(d) + rectHeight(d.parent))*yScale)
+            .attr("y2", d => (rectHeight(d) + rectHeight(d.parent))*yScale)
             .style("stroke-width", 4)
             // .style("stroke-dasharray", ("3, 3"))
             .attr("stroke", d => {
@@ -115,8 +118,8 @@ function StalactitePlot({ hierarchical_data }) {
                 .append("line")
             .attr("x1", 0)
             .attr("x2", d => rectWidth(d))
-            .attr("y1", d => (rectHeight(d) + rectHeight(d.parent.parent))*10)
-            .attr("y2", d => (rectHeight(d) + rectHeight(d.parent.parent))*10)
+            .attr("y1", d => (rectHeight(d) + rectHeight(d.parent.parent))*yScale)
+            .attr("y2", d => (rectHeight(d) + rectHeight(d.parent.parent))*yScale)
             .style("stroke-width", 4)
             // .style("stroke-dasharray", ("3, 3"))
             .attr("stroke", d => {
@@ -216,7 +219,7 @@ function StalactitePlot({ hierarchical_data }) {
             if (d.ancestors()) {
                 const ancestors = d.ancestors();
                 for (const ancestor of ancestors) {
-                    position += rectHeight(ancestor) * 10;
+                    position += rectHeight(ancestor) * yScale;
                 }
             } 
             return position;
@@ -234,17 +237,20 @@ function StalactitePlot({ hierarchical_data }) {
     );
 
     return (
-    //   <div style={{ position: "relative" }}>
+    <div style={{ margin: "auto", textAlign: "center" }}>
+    <h1 style={{ marginTop: "50px", paddingBottom: "30px" }}>Question Placeholder: some visualization task for the participant</h1>
+    {/* <div style={{ width: "75%", margin: "auto" }}> */}
         <svg
           ref={ref}
         //   style={{
-        //     height: 1650,
-        //     width: 1800,
-        //     marginTop: "20px"
+        //     height: "50%",
+        //     maxWidth: "50%",
+        //     // marginTop: "20px"
         //   }}
         >
         </svg>
-    // </div>
+    {/* </div> */}
+    </div>
     );
   }
   
