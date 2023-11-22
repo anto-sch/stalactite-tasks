@@ -7,30 +7,30 @@
        {
         "name": "Track 1",
         "children": [
-         {"name": "Paper 1", "citations": 50, "words": 5000},
-         {"name": "Paper 2", "citations": 30, "words": 2000},
-         {"name": "Paper 3", "citations": 70, "words": 7000},
-         {"name": "Paper 4", "citations": 100, "words": 5000}
+         {"name": "Paper 1", "ratio_val": 50, "add_val": 5000},
+         {"name": "Paper 2", "ratio_val": 30, "add_val": 2000},
+         {"name": "Paper 3", "ratio_val": 70, "add_val": 7000},
+         {"name": "Paper 4", "ratio_val": 100, "add_val": 5000}
         ]
        },
         {
         "name": "Track 2",
         "children": [
-         {"name": "Paper 1", "citations": 5, "words": 500},
-         {"name": "Paper 2", "citations": 10, "words": 600},
-         {"name": "Paper 3", "citations": 12, "words": 1000},
-         {"name": "Paper 4", "citations": 20, "words": 800}
+         {"name": "Paper 1", "ratio_val": 5, "add_val": 500},
+         {"name": "Paper 2", "ratio_val": 10, "add_val": 600},
+         {"name": "Paper 3", "ratio_val": 12, "add_val": 1000},
+         {"name": "Paper 4", "ratio_val": 20, "add_val": 800}
         ]
        },
         {
         "name": "Track 3",
         "children": [
-         {"name": "Paper 1", "citations": 80, "words": 8000},
-         {"name": "Paper 2", "citations": 66, "words": 10000},
-         {"name": "Paper 3", "citations": 51, "words": 7000},
-         {"name": "Paper 4", "citations": 40, "words": 8000}
+         {"name": "Paper 1", "ratio_val": 80, "add_val": 8000},
+         {"name": "Paper 2", "ratio_val": 66, "add_val": 10000},
+         {"name": "Paper 3", "ratio_val": 51, "add_val": 7000},
+         {"name": "Paper 4", "ratio_val": 40, "add_val": 8000}
         ]
-       },
+       }
       ]
      },
      {
@@ -39,30 +39,30 @@
        {
         "name": "Track 1",
         "children": [
-         {"name": "Paper 1", "citations": 50, "words": 5000},
-         {"name": "Paper 2", "citations": 30, "words": 2000},
-         {"name": "Paper 3", "citations": 70, "words": 7000},
-         {"name": "Paper 4", "citations": 100, "words": 5000}
+         {"name": "Paper 1", "ratio_val": 50, "add_val": 5000},
+         {"name": "Paper 2", "ratio_val": 30, "add_val": 2000},
+         {"name": "Paper 3", "ratio_val": 70, "add_val": 7000},
+         {"name": "Paper 4", "ratio_val": 100, "add_val": 5000}
         ]
        },
         {
         "name": "Track 2",
         "children": [
-         {"name": "Paper 1", "citations": 5, "words": 500},
-         {"name": "Paper 2", "citations": 18, "words": 600},
-         {"name": "Paper 3", "citations": 22, "words": 1000},
-         {"name": "Paper 4", "citations": 40, "words": 800}
+         {"name": "Paper 1", "ratio_val": 5, "add_val": 500},
+         {"name": "Paper 2", "ratio_val": 18, "add_val": 600},
+         {"name": "Paper 3", "ratio_val": 22, "add_val": 1000},
+         {"name": "Paper 4", "ratio_val": 40, "add_val": 800}
         ]
        },
         {
         "name": "Track 3",
         "children": [
-         {"name": "Paper 1", "citations": 80, "words": 8000},
-         {"name": "Paper 2", "citations": 66, "words": 10000},
-         {"name": "Paper 3", "citations": 51, "words": 7000},
-         {"name": "Paper 4", "citations": 40, "words": 8000}
+         {"name": "Paper 1", "ratio_val": 80, "add_val": 8000},
+         {"name": "Paper 2", "ratio_val": 66, "add_val": 10000},
+         {"name": "Paper 3", "ratio_val": 51, "add_val": 7000},
+         {"name": "Paper 4", "ratio_val": 40, "add_val": 8000}
         ]
-       },
+       }
       ]
      },
      {
@@ -71,30 +71,30 @@
        {
         "name": "Track 1",
         "children": [
-         {"name": "Paper 1", "citations": 50, "words": 5000},
-         {"name": "Paper 2", "citations": 30, "words": 2000},
-         {"name": "Paper 3", "citations": 70, "words": 7000},
-         {"name": "Paper 4", "citations": 100, "words": 5000}
+         {"name": "Paper 1", "ratio_val": 50, "add_val": 5000},
+         {"name": "Paper 2", "ratio_val": 30, "add_val": 2000},
+         {"name": "Paper 3", "ratio_val": 70, "add_val": 7000},
+         {"name": "Paper 4", "ratio_val": 100, "add_val": 5000}
         ]
        },
         {
         "name": "Track 2",
         "children": [
-         {"name": "Paper 1", "citations": 5, "words": 500},
-         {"name": "Paper 2", "citations": 18, "words": 600},
-         {"name": "Paper 3", "citations": 22, "words": 1000},
-         {"name": "Paper 4", "citations": 40, "words": 800}
+         {"name": "Paper 1", "ratio_val": 5, "add_val": 500},
+         {"name": "Paper 2", "ratio_val": 18, "add_val": 600},
+         {"name": "Paper 3", "ratio_val": 22, "add_val": 1000},
+         {"name": "Paper 4", "ratio_val": 40, "add_val": 800}
         ]
        },
         {
         "name": "Track 3",
         "children": [
-         {"name": "Paper 1", "citations": 80, "words": 8000},
-         {"name": "Paper 2", "citations": 66, "words": 10000},
-         {"name": "Paper 3", "citations": 51, "words": 7000},
-         {"name": "Paper 4", "citations": 40, "words": 8000}
+         {"name": "Paper 1", "ratio_val": 80, "add_val": 8000},
+         {"name": "Paper 2", "ratio_val": 66, "add_val": 10000},
+         {"name": "Paper 3", "ratio_val": 51, "add_val": 7000},
+         {"name": "Paper 4", "ratio_val": 40, "add_val": 8000}
         ]
-       },
+       }
       ]
      },
      {
@@ -103,31 +103,31 @@
        {
         "name": "Track 1",
         "children": [
-         {"name": "Paper 1", "citations": 50, "words": 5000},
-         {"name": "Paper 2", "citations": 30, "words": 2000},
-         {"name": "Paper 3", "citations": 70, "words": 7000},
-         {"name": "Paper 4", "citations": 100, "words": 5000}
+         {"name": "Paper 1", "ratio_val": 50, "add_val": 5000},
+         {"name": "Paper 2", "ratio_val": 30, "add_val": 2000},
+         {"name": "Paper 3", "ratio_val": 70, "add_val": 7000},
+         {"name": "Paper 4", "ratio_val": 100, "add_val": 5000}
         ]
        },
         {
         "name": "Track 2",
         "children": [
-         {"name": "Paper 1", "citations": 5, "words": 500},
-         {"name": "Paper 2", "citations": 18, "words": 600},
-         {"name": "Paper 3", "citations": 22, "words": 1000},
-         {"name": "Paper 4", "citations": 40, "words": 800}
+         {"name": "Paper 1", "ratio_val": 5, "add_val": 500},
+         {"name": "Paper 2", "ratio_val": 18, "add_val": 600},
+         {"name": "Paper 3", "ratio_val": 22, "add_val": 1000},
+         {"name": "Paper 4", "ratio_val": 40, "add_val": 800}
         ]
        },
         {
         "name": "Track 3",
         "children": [
-         {"name": "Paper 1", "citations": 80, "words": 8000},
-         {"name": "Paper 2", "citations": 66, "words": 10000},
-         {"name": "Paper 3", "citations": 51, "words": 7000},
-         {"name": "Paper 4", "citations": 40, "words": 8000}
+         {"name": "Paper 1", "ratio_val": 80, "add_val": 8000},
+         {"name": "Paper 2", "ratio_val": 66, "add_val": 10000},
+         {"name": "Paper 3", "ratio_val": 51, "add_val": 7000},
+         {"name": "Paper 4", "ratio_val": 40, "add_val": 8000}
         ]
-       },
+       }
       ]
-     },
+     }
     ]
    }

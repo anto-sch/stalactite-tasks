@@ -2,7 +2,7 @@ import { useD3 } from './hooks/useD3';
 import React from 'react';
 import * as d3 from 'd3';
 
-function FinStalactitePlot({ hierarchical_data }) {
+function StalactitePlot({ hierarchical_data }) {
 
     const ref = useD3(
       (svg) => {
@@ -249,5 +249,5 @@ function FinStalactitePlot({ hierarchical_data }) {
   }
   
   
-  export default FinStalactitePlot;
+  export default StalactitePlot;
   
