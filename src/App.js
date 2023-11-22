@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.css';
+import { Routes, Route} from "react-router-dom";
 import StalactitePlot from './StalactitePlot';
+import task_data from './data/NetProfitRates.json';
 
 
 const hierarchical_data = 
@@ -62,21 +64,26 @@ const hierarchical_data =
     ]
   }
 
-class App extends React.Component {
+function App() {
 
-  constructor(){
-    super()
-      this.state = {
-        data: hierarchical_data
-      };
-  }
+  // constructor(){
+  //   super()
+  //     this.state = {
+  //       data: task_data
+  //     };
+  // }
 
-  render() {
     return (
-        <div className="App">
-            <StalactitePlot hierarchical_data={this.state.data}/>
-        </div>
+        <>
+            {/* <StalactitePlot hierarchical_data={this.state.data}/> */}
+            <Routes>
+              <Route path="/" element={<StalactitePlot hierarchical_data={this.state.data}/>} />
+              <Route path="/task-2" element={<StalactitePlot hierarchical_data={this.state.data}/>} />
+              <Route path="/task-3" element={<StalactitePlot hierarchical_data={this.state.data}/>} />
+            </Routes>
+        </>
     )
-  }
+
 }
+
 export default App;
