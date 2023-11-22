@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/stalactite-tasks/static/css/main.e6c13ad2.css",
-    "main.js": "/stalactite-tasks/static/js/main.2225beaa.js",
+    "main.js": "/stalactite-tasks/static/js/main.c41a9526.js",
     "index.html": "/stalactite-tasks/index.html",
     "main.e6c13ad2.css.map": "/stalactite-tasks/static/css/main.e6c13ad2.css.map",
-    "main.2225beaa.js.map": "/stalactite-tasks/static/js/main.2225beaa.js.map"
+    "main.c41a9526.js.map": "/stalactite-tasks/static/js/main.c41a9526.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.2225beaa.js"
+    "static/js/main.c41a9526.js"
   ]
 }
