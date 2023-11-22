@@ -74,7 +74,7 @@ class App extends React.Component {
   render() {
     return (
         <div className="App">
-            <FinStalactitePlot hierarchical_data={this.state.data}/>
+            <StalactitePlot hierarchical_data={this.state.data}/>
         </div>
     )
   }
