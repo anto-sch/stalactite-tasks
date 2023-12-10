@@ -1,15 +1,20 @@
-import { useD3 } from './hooks/useD3';
+import { useEffect, useRef } from 'react';
 import React from 'react';
 import * as d3 from 'd3';
+import { useNavigate } from "react-router-dom";
 
-function StalactitePlot({ hierarchical_data }) {
+function StalactitePlot({ hierarchical_data, lines=false, task_text, task_answers }) {
 
-    const ref = useD3(
-      (svg) => {
+    const navigate = useNavigate();
+
+    const ref = useRef();
+
+    useEffect(() => {
+        const svg = d3.select(ref.current);
         const width = 1200;
         const height = 900;
 
-        const yScale = 8;
+        const yScale = 6;
       
         // Create the color scale.
         // const color = d3.scaleOrdinal(d3.quantize(d3.interpolateHslLong(d3.color("hsl(39, 50%, 75%)"), d3.color("hsl(300, 50%, 50%)")), hierarchical_data.children.length + 2));
@@ -43,6 +48,9 @@ function StalactitePlot({ hierarchical_data }) {
         */
         // yield svg.node();
 
+        svg.selectAll("*").remove();
+
+
         root.each(d => d.parent ? d.y0 = rectPosition(d.parent) : d.y0 = 0);
     
         const cell = svg
@@ -61,74 +69,23 @@ function StalactitePlot({ hierarchical_data }) {
             })
             .attr("fill-opacity", d => { if (d.depth>2) return 0; else {return 1;}})
             .style("cursor", "pointer")
-            .on("click", clicked);
-
-        const line = cell.filter(function(d) {return d.children}).append("line")
-            .attr("x1", 0)
-            .attr("x2", d => rectWidth(d))
-            .attr("y1", d => 2*rectHeight(d)*yScale)
-            .attr("y2", d => 2*rectHeight(d)*yScale)
-            .style("stroke-width", 8)
-            // .style("stroke-dasharray", ("3, 3"))
-            .attr("stroke", d => {
-            if (!d.depth) return color(0);
-            // while (d.depth > 1) d = d.parent;
-            return color(d.depth);
-            })
-            .attr("stroke-opacity", d => { if (d.depth>1) return 0; else {return 1;}})
-
-        const inner_node_line = cell.filter(function(d) {return d.children && d.parent}).append("line")
-            .attr("x1", 0)
-            .attr("x2", d => rectWidth(d))
-            .attr("y1", d => (rectHeight(d) + rectHeight(d.parent))*yScale)
-            .attr("y2", d => (rectHeight(d) + rectHeight(d.parent))*yScale)
-            .style("stroke-width", 4)
-            // .style("stroke-dasharray", ("3, 3"))
-            .attr("stroke", d => {
-            d = d.parent
-            if (!d.depth) return color(0);
-            // while (d.depth > 1) d = d.parent;
-            return color(d.depth);
-            })
-            .attr("stroke-opacity", d => { if (d.depth>1) return 0; else {return 1;}})
-
-        // const leaf_line = cell.filter(function(d) {return !d.children && d.parent}).append("line")
-        //     .attr("x1", 0)
-        //     .attr("x2", d => rectWidth(d))
-        //     .attr("y1", d => (rectHeight(d.parent.parent))*10)
-        //     .attr("y2", d => (rectHeight(d.parent.parent))*10)
-        //     .style("stroke-width", 2)
-        //     // .style("stroke-dasharray", ("3, 3"))
-        //     .attr("stroke", d => {
-        //     d = d.parent.parent
-        //     if (!d.depth) return color(0);
-        //     // while (d.depth > 1) d = d.parent;
-        //     return color(d.depth);
-        //     })
-            // .attr("stroke-opacity", d => { if (d.depth>1) return 0; else {return 1;}})
+            // .on("click", clicked);
         
-        const sec_inner_line = cell.filter(function(d) {
-                    const temp = d.parent; 
-                    if (temp === null) {
-                        return false;
-                    } else {                
-                        return d.children && temp.parent
-                    }
+        if (lines) {
+            const line = cell.filter(function(d) {return d.children}).append("line")
+                .attr("x1", 0)
+                .attr("x2", d => rectWidth(d))
+                .attr("y1", d => 2*rectHeight(d)*yScale)
+                .attr("y2", d => 2*rectHeight(d)*yScale)
+                .style("stroke-width", 8)
+                // .style("stroke-dasharray", ("3, 3"))
+                .attr("stroke", d => {
+                if (!d.depth) return color(0);
+                // while (d.depth > 1) d = d.parent;
+                return color(d.depth);
                 })
-                .append("line")
-            .attr("x1", 0)
-            .attr("x2", d => rectWidth(d))
-            .attr("y1", d => (rectHeight(d) + rectHeight(d.parent.parent))*yScale)
-            .attr("y2", d => (rectHeight(d) + rectHeight(d.parent.parent))*yScale)
-            .style("stroke-width", 4)
-            // .style("stroke-dasharray", ("3, 3"))
-            .attr("stroke", d => {
-            d = d.parent.parent;
-            if (!d.depth) return color(0);
-            // while (d.depth > 1) d = d.parent;
-            return color(d.depth);
-            })
-            .attr("stroke-opacity", d => { if (d.depth>1) return 0; else {return 1;}})
+                .attr("stroke-opacity", d => { if (d.depth>1) return 0; else {return 1;}})
+        }
 
         const text = cell.append("text")
             .style("user-select", "none")
@@ -141,16 +98,16 @@ function StalactitePlot({ hierarchical_data }) {
             .style("font-size", "20px")
             .text(d => d.data.name);
       
-        const format = d3.format(",d");
-        const tspan = text.append("tspan")
-            .attr("fill-opacity", d => labelVisible(d) * 0.7)
-            .style("white-space", "pre")
-            .style("font-size", "20px")
-            .text(d => `\nSales ${format(d.value)}\nProfit Margin ${format(rectHeight(d))}`);
+        // const format = d3.format(",d");
+        // const tspan = text.append("tspan")
+        //     .attr("fill-opacity", d => labelVisible(d) * 0.7)
+        //     .style("white-space", "pre")
+        //     .style("font-size", "20px")
+        //     .text(d => `\nSales ${format(d.value)}\nProfit Margin ${format(rectHeight(d))}`);
       
-        cell.append("title")
-            // .text(d => `${d.ancestors().map(d => d.data.name).reverse().join("/")}\n${format(d.value)}`);
-            .text(d => `${d.data.name}\nSales ${format(d.value)}\nProfit Margin ${format(rectHeight(d))}`);
+        // cell.append("title")
+        //     // .text(d => `${d.ancestors().map(d => d.data.name).reverse().join("/")}\n${format(d.value)}`);
+        //     .text(d => `${d.data.name}\nSales ${format(d.value)}\nProfit Margin ${format(rectHeight(d))}`);
 
         // On click, change the focus and transitions it into view.
         let focus = root;
@@ -175,24 +132,12 @@ function StalactitePlot({ hierarchical_data }) {
             rect.transition(t).attr("width", d => rectWidth(d.target));
             rect.attr("fill-opacity", d => { if (d.depth < 3+depth) { return 1; } else { return 0; } });
             
-            line.transition(t).attr("x1", 0);
-            line.transition(t).attr("x2", d => rectWidth(d.target));
-            line.attr("stroke-opacity", d => { if (d.depth < 2+depth && d.depth > depth-1) { return 1; } else { return 0; } });
-
-            inner_node_line.transition(t).attr("x1", 0);
-            inner_node_line.transition(t).attr("x2", d => rectWidth(d.target));
-            inner_node_line.attr("stroke-opacity", d => { if (d.depth < 2+depth && d.depth > depth-1) { return 1; } else { return 0; } });
-
-            // leaf_line.transition(t).attr("x1", 0);
-            // leaf_line.transition(t).attr("x2", d => rectWidth(d.target));
-            // leaf_line.attr("stroke-opacity", d => { if (d.depth < 2+depth && d.depth > depth-1) { return 1; } else { return 0; } });
-
-            sec_inner_line.transition(t).attr("x1", 0);
-            sec_inner_line.transition(t).attr("x2", d => rectWidth(d.target));
-            sec_inner_line.attr("stroke-opacity", d => { if (d.depth < 2+depth && d.depth > depth-1) { return 1; } else { return 0; } });
+            // line.transition(t).attr("x1", 0);
+            // line.transition(t).attr("x2", d => rectWidth(d.target));
+            // line.attr("stroke-opacity", d => { if (d.depth < 2+depth && d.depth > depth-1) { return 1; } else { return 0; } });
 
             text.attr("fill-opacity", function(d) { return +labelVisible(d.target, d.depth-depth) });
-            tspan.attr("fill-opacity", d => labelVisible(d.target, d.depth-depth) * 0.7);
+            // tspan.attr("fill-opacity", d => labelVisible(d.target, d.depth-depth) * 0.7);
         }
     
         function rectWidth(d) {
@@ -236,20 +181,52 @@ function StalactitePlot({ hierarchical_data }) {
       [hierarchical_data]
     );
 
+    function onAnswer(answer) {
+        let clockTimeout = null;
+
+        if (!answer[2]) {
+            document.getElementById('alert').style.display = 'block'
+            clearTimeout(clockTimeout)
+            clockTimeout = setTimeout(() => {
+            document.getElementById('alert').style.display = 'none'
+            }, 500)
+        }
+        navigate(answer[0]);
+    }
+
+    /* Randomize array in-place using Durstenfeld shuffle algorithm */
+    function shuffleArray(array) {
+        for (var i = array.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
+    }
+
+    let answerButtons = [];
+
+    task_answers.map((answer) =>
+        answerButtons.push(<button className="button" onClick={() => onAnswer(answer)}>{answer[1]}</button>)
+    );
+
+    shuffleArray(answerButtons);
+
     return (
-    <div style={{ margin: "auto", textAlign: "center" }}>
-    <h1 style={{ marginTop: "50px", paddingBottom: "30px" }}>Question Placeholder: some visualization task for the participant</h1>
-    {/* <div style={{ width: "75%", margin: "auto" }}> */}
-        <svg
-          ref={ref}
-        //   style={{
-        //     height: "50%",
-        //     maxWidth: "50%",
-        //     // marginTop: "20px"
-        //   }}
-        >
-        </svg>
-    {/* </div> */}
+        <div style={{ margin: "auto", textAlign: "center" }}>
+        <div id="alert" style={{ display: "none", position: "absolute", left: 0, right: 0, top: "300px", marginLeft: "auto", marginRight: "auto", backgroundColor: "#f55d42", color: "white" }}><h3>This is not correct! Please reread the explanation and try answering again.</h3></div>
+        <div style={{ marginTop: "50px", paddingBottom: "30px", marginRight: "150px", marginLeft: "150px", textAlign: "center" }}>
+            <span style={{ fontSize: "24px", whiteSpace: "pre-line" }}>{task_text}</span>
+        </div>
+        {/* <div style={{ width: "75%", margin: "auto" }}> */}
+            <svg
+            ref={ref}
+            >
+            </svg>
+        {/* </div> */}
+        <div style={{position: "absolute", left: 0, right: 0, marginLeft: "auto", marginRight: "auto", bottom: "40px", width: "800px"}}>
+            {answerButtons}
+        </div>
     </div>
     );
   }

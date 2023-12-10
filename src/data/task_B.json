@@ -1,0 +1,20 @@
+{
+    "name": "Technology",
+    "children": [
+        {"name": "Software Infrastructure",
+        "children": [
+            {"name": "Company A", "add_val": 90, "ratio_val": 47},
+            {"name": "Company B", "add_val": 140.91, "ratio_val": 30}
+            
+        ]},
+        {"name": "Consumer Electronics",
+        "children": [
+            {"name": "Company C", "add_val": 80.91, "ratio_val": 10},
+            {"name": "Company D", "add_val": 130, "ratio_val": 31},
+            {"name": "Company E", "add_val": 180, "ratio_val": 14}
+        ]}
+    ]
+    
+}
+
+

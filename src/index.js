@@ -8,13 +8,20 @@ import Navbar from './NavBar';
 import TrainingTask from './TrainingTask';
 import Introduction from './Introduction';
 
-import task_1 from './data/task_1.json';
-import task_2 from './data/task_2.json';
-import task_3 from './data/task_3.json';
+import task_A from './data/task_A.json';
+import task_B from './data/task_B.json';
 import ttask_0 from './data/ttask_0.json';
 import ttask_1 from './data/ttask_1.json';
 import ttask_3 from './data/ttask_3.json';
 import ttask_5 from './data/ttask_5.json';
+
+const task_1_text = "Which companies in the Consumer Electronics sector have a profit margin above sector average?"
+const task_2_text = "Which companies in the Consumer Electronics sector have a profit margin below sector average?"
+const task_3_text = "Which companies in the Software Infrastructure sector have a profit margin above sector average?"
+const task_4_text = "Which companies in the Software Infrastructure sector have a profit margin below sector average?"
+const task_5_text = "Which sectors in the Technology industry have a profit margin above industry average?"
+const task_6_text = "Which sectors in the Technology industry have a profit margin below industry average?"
+
 
 const ttask_0_text = `You are a financial investor using a visualization that allows you to compare the sales and profit margins of several companies. Sales is the company's income in a business year from selling its products. The profit margin is the percentage of sales that the company earns as profit. \n\nIn the visualization, companies are represented by boxes. The width of the box corresponds to the company's sales and the height to the profit margin.\n`
 const ttask_1_text = "Let's look at an example. The diagram below shows sales and profit margin for three companies. A frequent task of investors is to compare and rank companies with respect to sales or profit margins. Remember, sales is represented by the width, profit margin by the height of the box. \n\nPlease rank the boxes from highest to lowest sales."
@@ -31,24 +38,125 @@ const ttask_4_answers = [["/ttask-4", "Company A, Company C", false], ["/ttask-5
 const ttask_5_answers = [["/ttask-5", "Software Infrastructure", false], ["/ttask-6", "Consumer Electronics", true]]
 const ttask_6_answers = [["/end", "Red", true], ["/ttask-6", "Yellow", false]]
 
+const task_1_a_answers = [["/task-1-b-lines", "Company E", true], ["/task-1-a-lines", "Company D", false], ["/task-1-a-lines", "Company A", false]]
+const task_1_b_answers = [["/task-2-a-lines", "Company D", true], ["/task-1-b-lines", "Company E", false], ["/task-1-b-lines", "Company D, Company E", false]]
+const task_2_a_answers = [["/task-2-b-lines", "Company D", true], ["/task-2-a-lines", "Company E", false], ["/task-2-a-lines", "Company C", false]]
+const task_2_b_answers = [["/task-3-a-lines", "Company C, Company E", true], ["/task-2-b-lines", "Company D, Company E", false], ["/task-2-b-lines", "Company C", false]]
+const task_3_a_answers = [["/task-3-b-lines", "Company B, Company C", true], ["/task-3-a-lines", "Company A, Company B", false], ["/task-3-a-lines", "Company C", false]]
+const task_3_b_answers = [["/task-4-a-lines", "Company A", true], ["/task-3-b-lines", "Company B", false], ["/task-3-b-lines", "Company C", false]]
+const task_4_a_answers = [["/task-4-b-lines", "Company A", true], ["/task-4-a-lines", "Company A, Company C", false], ["/task-4-a-lines", "Company B", false]]
+const task_4_b_answers = [["/task-5-a-lines", "Company B", true], ["/task-4-b-lines", "Company A", false], ["/task-4-b-lines", "Company D", false]]
+const task_5_a_answers = [["/task-5-b-lines", "Consumer Electronics", true], ["/task-5-a-lines", "Software Infrastructure", false], ["/task-5-a-lines", "Company A", false]]
+const task_5_b_answers = [["/task-6-a-lines", "Software Infrastructure", true], ["/task-5-b-lines", "Consumer Electronics", false], ["/task-5-b-lines", "Company C", false]]
+const task_6_a_answers = [["/task-6-b-lines", "Software Infrastructure", true], ["/task-6-a-lines", "Consumer Electronics", false], ["/task-6-a-lines", "Company B", false]]
+const task_6_b_answers = [["/end", "Consumer Electronics", true], ["/task-6-b-lines", "Software Infrastructure", false], ["/task-6-b-lines", "Company A", false]]
+
+
 
 const router = createHashRouter([
   {
     path: "/",
     element: <Navbar/>
   },
+  // stalactite plots with lines
   {
-    path: "/task-1",
-    element: <StalactitePlot hierarchical_data={task_1} />
+    path: "/task-1-a-lines",
+    element: <StalactitePlot hierarchical_data={task_A} task_text={task_1_text} task_answers={task_1_a_answers} />
   },
   {
-    path: "/task-2",
-    element: <StalactitePlot hierarchical_data={task_2} />
+    path: "/task-1-b-lines",
+    element: <StalactitePlot hierarchical_data={task_B} task_text={task_1_text} task_answers={task_1_b_answers} />
   },
   {
-    path: "/task-3",
-    element: <StalactitePlot hierarchical_data={task_3} />
+    path: "/task-2-a-lines",
+    element: <StalactitePlot hierarchical_data={task_A} task_text={task_2_text} task_answers={task_2_a_answers} />
   },
+  {
+    path: "/task-2-b-lines",
+    element: <StalactitePlot hierarchical_data={task_B} task_text={task_2_text} task_answers={task_2_b_answers} />
+  },
+  {
+    path: "/task-3-a-lines",
+    element: <StalactitePlot hierarchical_data={task_A} task_text={task_3_text} task_answers={task_3_a_answers} />
+  },
+  {
+    path: "/task-3-b-lines",
+    element: <StalactitePlot hierarchical_data={task_B} task_text={task_3_text} task_answers={task_3_b_answers} />
+  },
+  {
+    path: "/task-4-a-lines",
+    element: <StalactitePlot hierarchical_data={task_A} task_text={task_4_text} task_answers={task_4_a_answers} />
+  },
+  {
+    path: "/task-4-b-lines",
+    element: <StalactitePlot hierarchical_data={task_B} task_text={task_4_text} task_answers={task_4_b_answers} />
+  },
+  {
+    path: "/task-5-a-lines",
+    element: <StalactitePlot hierarchical_data={task_A} task_text={task_5_text} task_answers={task_5_a_answers} />
+  },
+  {
+    path: "/task-5-b-lines",
+    element: <StalactitePlot hierarchical_data={task_B} task_text={task_5_text} task_answers={task_5_b_answers} />
+  },
+  {
+    path: "/task-6-a-lines",
+    element: <StalactitePlot hierarchical_data={task_A} task_text={task_6_text} task_answers={task_6_a_answers} />
+  },
+  {
+    path: "/task-6-b-lines",
+    element: <StalactitePlot hierarchical_data={task_B} task_text={task_6_text} task_answers={task_6_b_answers} />
+  },
+  // stalactite plots without lines
+  {
+    path: "/task-1-a",
+    element: <StalactitePlot hierarchical_data={task_A} lines={false} task_text={task_1_text} task_answers={task_1_a_answers} />
+  },
+  {
+    path: "/task-1-b",
+    element: <StalactitePlot hierarchical_data={task_B} lines={false} task_text={task_1_text} task_answers={task_1_b_answers} />
+  },
+  {
+    path: "/task-2-a",
+    element: <StalactitePlot hierarchical_data={task_A} lines={false} task_text={task_2_text} task_answers={task_2_a_answers} />
+  },
+  {
+    path: "/task-2-b",
+    element: <StalactitePlot hierarchical_data={task_B} lines={false} task_text={task_2_text} task_answers={task_2_b_answers} />
+  },
+  {
+    path: "/task-3-a",
+    element: <StalactitePlot hierarchical_data={task_A} lines={false} task_text={task_3_text} task_answers={task_3_a_answers} />
+  },
+  {
+    path: "/task-3-b",
+    element: <StalactitePlot hierarchical_data={task_B} lines={false} task_text={task_3_text} task_answers={task_3_b_answers} />
+  },
+  {
+    path: "/task-4-a",
+    element: <StalactitePlot hierarchical_data={task_A} lines={false} task_text={task_4_text} task_answers={task_4_a_answers} />
+  },
+  {
+    path: "/task-4-b",
+    element: <StalactitePlot hierarchical_data={task_B} lines={false} task_text={task_4_text} task_answers={task_4_b_answers} />
+  },
+  {
+    path: "/task-5-a",
+    element: <StalactitePlot hierarchical_data={task_A} lines={false} task_text={task_5_text} task_answers={task_5_a_answers} />
+  },
+  {
+    path: "/task-5-b",
+    element: <StalactitePlot hierarchical_data={task_B} lines={false} task_text={task_5_text} task_answers={task_5_b_answers} />
+  },
+  {
+    path: "/task-6-a",
+    element: <StalactitePlot hierarchical_data={task_A} lines={false} task_text={task_6_text} task_answers={task_6_a_answers} />
+  },
+  {
+    path: "/task-6-b",
+    element: <StalactitePlot hierarchical_data={task_B} lines={false} task_text={task_6_text} task_answers={task_6_b_answers} />
+  },
+  // training tasks
   {
     path: "/ttask-0",
     element: <Introduction task_data={ttask_0} task_text={ttask_0_text} />
