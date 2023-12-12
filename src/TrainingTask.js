@@ -87,13 +87,22 @@ function TrainingTask({ task_data, task_text, task_answers }) {
             clockTimeout = setTimeout(() => {
             document.getElementById('alert').style.display = 'none'
             }, 2000)
+        } else {
+            console.log("correct")
+            document.getElementById('correct').style.display = 'block'
+            clearTimeout(clockTimeout)
+            clockTimeout = setTimeout(() => {
+            document.getElementById('correct').style.display = 'none'
+            }, 500)
         }
+
         navigate(answer[0]);
     }
 
     return (
         <div style={{ margin: "auto", textAlign: "center" }}>
             <div id="alert" style={{ display: "none", position: "absolute", left: 0, right: 0, top: "300px", marginLeft: "auto", marginRight: "auto", backgroundColor: "#f55d42", color: "white" }}><h3>This is not correct! Please reread the explanation and try answering again.</h3></div>
+            <div id="correct" style={{ display: "none", position: "absolute", left: 0, right: 0, top: "300px", marginLeft: "auto", marginRight: "auto", backgroundColor: "#4ccf40", color: "white" }}><h3>Correct</h3></div>
             <div style={{ marginTop: "20px", paddingBottom: "30px", marginRight: "150px", marginLeft: "180px", textAlign: "left" }}>
                 <span style={{ fontSize: "24px", whiteSpace: "pre-line" }}>{task_text}</span>
             </div>
