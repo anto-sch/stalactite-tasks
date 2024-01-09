@@ -10,11 +10,11 @@ function IciclePlot({ hierarchical_data }) {
         const height = 750;
       
         // Create the color scale.
-        const color = d3.scaleOrdinal(d3.quantize(d3.interpolateRainbow, hierarchical_data.children.length + 1));
+        const color = d3.scaleOrdinal(d3.quantize(d3.interpolateRgbBasis([d3.color("hsl(15, 52%, 62%)"), d3.color("hsl(64, 52%, 62%)"), d3.color("hsl(197, 23%, 62%)")]), hierarchical_data.children.length + 2));
       
         // Compute the layout.
         const hierarchy = d3.hierarchy(hierarchical_data)
-            .sum(d => d.citations)
+            .sum(d => d.add_val)
             // .sort((a, b) => b.height - a.height || b.value - a.value);
         const root = d3.partition()
             .size([width, (hierarchy.height + 1) * height / 3])
@@ -49,30 +49,31 @@ function IciclePlot({ hierarchical_data }) {
             .attr("height", d => d.y1 - d.y0 - 1)
             .attr("width", d => rectWidth(d))
             .attr("fill", d => {
-            if (!d.depth) return "#ccc";
-            while (d.depth > 1) d = d.parent;
-            return color(d.data.name);
-            })
+              if (!d.depth) return color(0);
+              // while (d.depth > 1) d = d.parent;
+              return color(d.depth);
+              })
             .style("cursor", "pointer")
             .on("click", clicked);
 
         const text = cell.append("text")
-            .style("user-select", "none")
-            .attr("pointer-events", "none")
-            .attr("x", 4)
-            .attr("y", 13)
-            .attr("fill-opacity", function(d) { return +labelVisible(d) });
+          .style("user-select", "none")
+          .attr("pointer-events", "none")
+          .attr("x", 15)
+          .attr("y", 40)
+          .attr("fill-opacity", function(d) { return +labelVisible(d) });
       
         text.append("tspan")
-            .text(d => d.data.name);
+          .style("font-size", "28px")
+          .text(d => d.data.name);
       
-        const format = d3.format(",d");
-        const tspan = text.append("tspan")
-            .attr("fill-opacity", d => labelVisible(d) * 0.7)
-            .text(d => ` ${format(d.value)}`);
+        // const format = d3.format(",d");
+        // const tspan = text.append("tspan")
+        //     .attr("fill-opacity", d => labelVisible(d) * 0.7)
+        //     .text(d => ` ${format(d.value)}`);
       
-        cell.append("title")
-            .text(d => `${d.ancestors().map(d => d.data.name).reverse().join("/")}\n${format(d.value)}`);
+        // cell.append("title")
+        //     .text(d => `${d.ancestors().map(d => d.data.name).reverse().join("/")}\n${format(d.value)}`);
         
         console.log("rect", rect)
     
@@ -94,7 +95,7 @@ function IciclePlot({ hierarchical_data }) {
 
             rect.transition(t).attr("width", d => rectWidth(d.target));
             text.transition(t).attr("fill-opacity", function(d) { return +labelVisible(d.target) });
-            tspan.transition(t).attr("fill-opacity", d => labelVisible(d.target) * 0.7);
+            // tspan.transition(t).attr("fill-opacity", d => labelVisible(d.target) * 0.7);
         }
     
         function rectWidth(d) {

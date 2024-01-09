@@ -14,6 +14,8 @@ import ttask_0 from './data/ttask_0.json';
 import ttask_1 from './data/ttask_1.json';
 import ttask_3 from './data/ttask_3.json';
 import ttask_5 from './data/ttask_5.json';
+import icicle from './data/icicle.json';
+import IciclePlot from './IciclePlot';
 
 const task_1_text = "Which companies in the Consumer Electronics sector have a profit margin above sector average?"
 const task_2_text = "Which companies in the Consumer Electronics sector have a profit margin below sector average?"
@@ -189,6 +191,10 @@ const router = createHashRouter([
     path: "/end",
     element: <h1>You have completed the training. Press f10 to continue!</h1> 
   },
+  {
+    path: "/icicle",
+    element: <IciclePlot hierarchical_data={icicle}/>
+  }
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
