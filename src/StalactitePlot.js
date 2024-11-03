@@ -3,7 +3,7 @@ import React from 'react';
 import * as d3 from 'd3';
 import { useNavigate } from "react-router-dom";
 
-function StalactitePlot({ hierarchical_data, lines=false, task_text, task_answers }) {
+function StalactitePlot({ hierarchical_data, lines=true, task_text, task_answers }) {
 
     const navigate = useNavigate();
 
@@ -11,14 +11,16 @@ function StalactitePlot({ hierarchical_data, lines=false, task_text, task_answer
 
     useEffect(() => {
         const svg = d3.select(ref.current);
-        const width = 1200;
+        const width = 1500;
         const height = 900;
 
         const yScale = 6;
       
         // Create the color scale.
         // const color = d3.scaleOrdinal(d3.quantize(d3.interpolateHslLong(d3.color("hsl(39, 50%, 75%)"), d3.color("hsl(300, 50%, 50%)")), hierarchical_data.children.length + 2));
-        const color = d3.scaleOrdinal(d3.quantize(d3.interpolateRgbBasis([d3.color("hsl(15, 52%, 62%)"), d3.color("hsl(64, 52%, 62%)"), d3.color("hsl(197, 23%, 62%)")]), hierarchical_data.children.length + 2));
+        // const color = d3.scaleOrdinal(d3.quantize(d3.interpolateRgbBasis([d3.color("hsl(15, 52%, 62%)"), d3.color("hsl(64, 52%, 62%)"), d3.color("hsl(197, 23%, 62%)")]), hierarchical_data.children.length + 2));
+
+        const color = d3.scaleOrdinal(d3.quantize(d3.interpolateRgbBasis([d3.color("hsl(138, 18%, 58%)"), d3.color("hsl(11, 76%, 58%)"), d3.color("hsl(50, 91%, 44%)")]), 3));
 
         
         // Compute the layout.
@@ -95,7 +97,7 @@ function StalactitePlot({ hierarchical_data, lines=false, task_text, task_answer
             .attr("fill-opacity", function(d) { return +labelVisible(d) });
       
         text.append("tspan")
-            .style("font-size", "20px")
+            .style("font-size", "24px")
             .text(d => d.data.name);
       
         // const format = d3.format(",d");
@@ -224,9 +226,9 @@ function StalactitePlot({ hierarchical_data, lines=false, task_text, task_answer
             >
             </svg>
         {/* </div> */}
-        <div style={{position: "absolute", left: 0, right: 0, marginLeft: "auto", marginRight: "auto", bottom: "40px", width: "800px"}}>
+        {/* <div style={{position: "absolute", left: 0, right: 0, marginLeft: "auto", marginRight: "auto", bottom: "40px", width: "800px"}}>
             {answerButtons}
-        </div>
+        </div> */}
     </div>
     );
   }

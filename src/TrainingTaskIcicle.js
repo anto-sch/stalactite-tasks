@@ -5,7 +5,7 @@ import './StalactiteTask.css';
 import { useNavigate } from "react-router-dom";
 
 
-function TrainingTask({ task_data, task_text, task_answers }) {
+function TrainingTaskIcicle({ task_data, task_text, task_answers }) {
     const navigate = useNavigate();
 
     const ref = useRef();
@@ -16,7 +16,6 @@ function TrainingTask({ task_data, task_text, task_answers }) {
         const height = 400;
         let posX = 0;
       
-        // const color = d3.scaleOrdinal(d3.quantize(d3.interpolateRgbBasis([d3.color("hsl(15, 52%, 62%)"), d3.color("hsl(64, 52%, 62%)"), d3.color("hsl(197, 23%, 62%)")]), task_data.length + 1));
         const color = d3.scaleOrdinal(d3.quantize(d3.interpolateRgbBasis([d3.color("hsl(138, 18%, 58%)"), d3.color("hsl(11, 76%, 58%)"), d3.color("hsl(50, 91%, 44%)")]), 3));
 
         svg
@@ -45,7 +44,7 @@ function TrainingTask({ task_data, task_text, task_answers }) {
             .attr("transform", function(d, i) {return `translate(${getPosX(d.add_val*2)},0)`});
         
         cell.append("rect")
-            .attr("height", d => d.ratio_val*2)
+            .attr("height", 100)
             .attr("width", d => d.add_val*2)
             .attr("fill", (d,i) => {
                 return color(i);
@@ -62,11 +61,19 @@ function TrainingTask({ task_data, task_text, task_answers }) {
             .style("font-size", "20px")
             .text(d => d.name);
       
-        // const format = d3.format(",d");
-        // text.append("tspan")
-        //     .style("white-space", "pre")
-        //     .style("font-size", "20px")
-        //     .text(d => `\nSales ${format(d.add_val)}\nProfit Margin ${format(d.ratio_val)}`);
+            const label = cell.append("text")
+            .style("user-select", "none")
+            .attr("pointer-events", "none")
+            .attr("x", 15)
+            .attr("y", 80);
+  
+        label.append("tspan")
+            .style("font-size", "16px")
+            .text(d => "\nprofit margin: ");
+  
+        label.append("tspan")
+            .style("font-size", "20px")
+            .text(d => Math.round(d.ratio_val) + "%");
 
         // Calculate PosX
         function getPosX(rectWidth, index) {
@@ -125,5 +132,5 @@ function TrainingTask({ task_data, task_text, task_answers }) {
   }
   
   
-  export default TrainingTask;
+  export default TrainingTaskIcicle;
   

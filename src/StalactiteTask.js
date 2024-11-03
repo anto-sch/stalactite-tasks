@@ -18,9 +18,10 @@ function StalactiteTask({ lines, task_data, task_text, task_answers }) {
       
         // Create the color scale.
         // const color = d3.scaleOrdinal(d3.quantize(d3.interpolateHslLong(d3.color("hsl(39, 50%, 75%)"), d3.color("hsl(300, 50%, 50%)")), hierarchical_data.children.length + 2));
-        const color = d3.scaleOrdinal(d3.quantize(d3.interpolateRgbBasis([d3.color("hsl(15, 52%, 62%)"), d3.color("hsl(64, 52%, 62%)"), d3.color("hsl(197, 23%, 62%)")]), task_data.children.length + 2));
-
+        // const color = d3.scaleOrdinal(d3.quantize(d3.interpolateRgbBasis([d3.color("hsl(15, 52%, 62%)"), d3.color("hsl(64, 52%, 62%)"), d3.color("hsl(197, 23%, 62%)")]), task_data.children.length + 2));
+        const color = d3.scaleOrdinal(d3.quantize(d3.interpolateRgbBasis([d3.color("hsl(138, 18%, 58%)"), d3.color("hsl(11, 76%, 58%)"), d3.color("hsl(50, 91%, 44%)")]), 3));
         
+
         // Compute the layout.
         const hierarchy = d3.hierarchy(task_data)
             .sum(d => d.add_val)
@@ -183,13 +184,13 @@ function StalactiteTask({ lines, task_data, task_text, task_answers }) {
     function onAnswer(answer) {
         let clockTimeout = null;
 
-        if (!answer[2]) {
+        if (!answer[2] && document.getElementById('alert')) {
             document.getElementById('alert').style.display = 'block'
             clearTimeout(clockTimeout)
             clockTimeout = setTimeout(() => {
             document.getElementById('alert').style.display = 'none'
-            }, 2000)
-        } else {
+            }, 1000)
+        } else if (document.getElementById('correct')) {
             console.log("correct")
             document.getElementById('correct').style.display = 'block'
             clearTimeout(clockTimeout)
@@ -202,10 +203,10 @@ function StalactiteTask({ lines, task_data, task_text, task_answers }) {
 
     return (
         <div style={{ margin: "auto", textAlign: "center" }}>
-            <div id="alert" style={{ display: "none", position: "absolute", left: 0, right: 0, top: "300px", marginLeft: "auto", marginRight: "auto", backgroundColor: "#f55d42", color: "white" }}><h3>This is not correct! Please reread the explanation and try answering again.</h3></div>
-            <div id="correct" style={{ display: "none", position: "absolute", left: 0, right: 0, top: "300px", marginLeft: "auto", marginRight: "auto", backgroundColor: "#4ccf40", color: "white" }}><h3>Correct</h3></div>
+            <div id="alert" style={{ display: "none", position: "absolute", left: 0, right: 0, top: "300px", marginLeft: "auto", marginRight: "auto", backgroundColor: "#f55d42", color: "white" }}><h3>Not correct! Please try again.</h3></div>
+            <div id="correct" style={{ display: "none", position: "absolute", left: 0, right: 0, top: "300px", marginLeft: "auto", marginRight: "auto", backgroundColor: "#4ccf40", color: "white" }}><h3>Correct!</h3></div>
             <div style={{ marginTop: "20px", paddingBottom: "30px", marginRight: "150px", marginLeft: "180px", textAlign: "left" }}>
-                <span style={{ fontSize: "24px", whiteSpace: "pre-line" }}>{task_text}</span>
+                <span style={{ fontSize: "20px", whiteSpace: "pre-line" }}>{task_text}</span>
             </div>
             {/* <div style={{ width: "75%", margin: "auto" }}> */}
                 <svg
