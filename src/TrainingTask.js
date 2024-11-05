@@ -105,7 +105,7 @@ function TrainingTask({ task_data, task_text, task_answers }) {
             <div id="alert" style={{ display: "none", position: "absolute", left: 0, right: 0, top: "300px", marginLeft: "auto", marginRight: "auto", backgroundColor: "#f55d42", color: "white" }}><h3>Not correct! Please try again.</h3></div>
             <div id="correct" style={{ display: "none", position: "absolute", left: 0, right: 0, top: "300px", marginLeft: "auto", marginRight: "auto", backgroundColor: "#4ccf40", color: "white" }}><h3>Correct!</h3></div>
             <div style={{ marginTop: "20px", paddingBottom: "30px", marginRight: "150px", marginLeft: "180px", textAlign: "left" }}>
-                <span style={{ fontSize: "20px", whiteSpace: "pre-line" }}>{task_text}</span>
+                <span style={{ fontSize: "18px", whiteSpace: "pre-line" }}>{task_text}</span>
             </div>
             {/* <div style={{ width: "75%", margin: "auto" }}> */}
                 <svg

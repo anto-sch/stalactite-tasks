@@ -65,7 +65,7 @@ function IntroIcicle({ task_data, task_text, vis_type }) {
     return (
         <div style={{ margin: "auto", textAlign: "center" }}>
             <div style={{ marginTop: "20px", paddingBottom: "30px", marginRight: "150px", marginLeft: "180px", textAlign: "left" }}>
-                <span style={{ fontSize: "20px", whiteSpace: "pre-line" }}>{task_text}</span>
+                <span style={{ fontSize: "18px", whiteSpace: "pre-line" }}>{task_text}</span>
             </div>
             {/* <div style={{ width: "75%", margin: "auto" }}> */}
                 <svg

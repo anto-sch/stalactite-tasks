@@ -1,0 +1,19 @@
+{
+    "name": "Beach Road",
+    "children": [
+        {"name": "Beach Road 1009",
+        "children": [
+            {"name": "Apartment A", "add_val": 200.91, "ratio_val": 12},
+            {"name": "Apartment B", "add_val": 110, "ratio_val": 33},
+            {"name": "Apartment C", "add_val": 154, "ratio_val": 22}
+        ]},
+        {"name": "Beach Road 1010",
+        "children": [
+            {"name": "Apartment D", "add_val": 130.91, "ratio_val": 24},
+            {"name": "Apartment E", "add_val": 113, "ratio_val": 33}
+        ]}
+    ]
+    
+}
+
+

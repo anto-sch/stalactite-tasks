@@ -5,7 +5,7 @@ import './StalactiteTask.css'
 import { useNavigate } from "react-router-dom";
 
 
-function Introduction({ task_data, task_text, vis_type }) {
+function IntroductionEnergy({ task_data, task_text, vis_type }) {
     const navigate = useNavigate();
 
     const ref = useRef();
@@ -55,7 +55,7 @@ function Introduction({ task_data, task_text, vis_type }) {
         text.append("tspan")
             .style("white-space", "pre")
             .style("font-size", "28px")
-            .text(d => `\nSales ${format(task_data.add_val)}$ milion\nProfit Margin ${format(task_data.ratio_val)}%`);
+            .text(d => `\nNo. of people: ${format(Math.round(task_data.add_val/100))}\nPer-person energy use ${format((task_data.ratio_val/10).toFixed(1))} kwh/person`);
 
         
       },
@@ -74,12 +74,12 @@ function Introduction({ task_data, task_text, vis_type }) {
                 </svg>
             {/* </div> */}
             <div style={{position: "absolute", left: 0, right: 0, marginLeft: "auto", marginRight: "auto", bottom: "40px", width: "800px"}}>
-                <button className="button" onClick={function() { if (vis_type === 1) { navigate("/ttask-1") } else { navigate("/no-lines-ttask-1") }}}>Continue</button>
+                <button className="button" onClick={function() { if (vis_type === 1) { navigate("/ttask-1-energy") } else { navigate("/no-lines-ttask-1-energy") }}}>Continue</button>
             </div>
         </div>
     );
   }
   
   
-  export default Introduction;
+  export default IntroductionEnergy;
   

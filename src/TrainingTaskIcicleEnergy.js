@@ -5,7 +5,7 @@ import './StalactiteTask.css';
 import { useNavigate } from "react-router-dom";
 
 
-function TrainingTaskIcicle({ task_data, task_text, task_answers }) {
+function TrainingTaskIcicleEnergy({ task_data, task_text, task_answers }) {
     const navigate = useNavigate();
 
     const ref = useRef();
@@ -61,19 +61,25 @@ function TrainingTaskIcicle({ task_data, task_text, task_answers }) {
             .style("font-size", "20px")
             .text(d => d.name);
       
-            const label = cell.append("text")
+        const label = cell.append("text")
             .style("user-select", "none")
             .attr("pointer-events", "none")
             .attr("x", 15)
-            .attr("y", 80);
+            .attr("y", 60);
   
         label.append("tspan")
             .style("font-size", "16px")
-            .text(d => "\nprofit margin: ");
+            .text(d => "\nper-person energy use: ");
+
+        const label2 = cell.append("text")
+            .style("user-select", "none")
+            .attr("pointer-events", "none")
+            .attr("x", 15)
+            .attr("y", 85)
   
-        label.append("tspan")
+          label2.append("tspan")
             .style("font-size", "20px")
-            .text(d => Math.round(d.ratio_val) + "%");
+            .text(d => (d.ratio_val/10).toFixed(1) + " kWh/person");
 
         // Calculate PosX
         function getPosX(rectWidth, index) {
@@ -132,5 +138,5 @@ function TrainingTaskIcicle({ task_data, task_text, task_answers }) {
   }
   
   
-  export default TrainingTaskIcicle;
+  export default TrainingTaskIcicleEnergy;
   
