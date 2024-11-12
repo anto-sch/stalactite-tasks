@@ -67,13 +67,13 @@ function TrainingTaskIcicle({ task_data, task_text, task_answers }) {
             .attr("x", 15)
             .attr("y", 80);
   
-        label.append("tspan")
-            .style("font-size", "16px")
-            .text(d => "\nprofit margin: ");
+        // label.append("tspan")
+        //     .style("font-size", "16px")
+        //     .text(d => "\nprofit margin: ");
   
         label.append("tspan")
             .style("font-size", "20px")
-            .text(d => Math.round(d.ratio_val) + "%");
+            .text(d => Math.round(d.ratio_val));
 
         // Calculate PosX
         function getPosX(rectWidth, index) {

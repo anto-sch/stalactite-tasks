@@ -86,13 +86,13 @@ function IcicleTask({ lines, task_data, task_text, task_answers }) {
           .attr("y", 80)
           .attr("fill-opacity", function(d) { return +labelVisible(d) });
 
-        label.append("tspan")
-          .style("font-size", "16px")
-          .text(d => "\nprofit margin: ");
+        // label.append("tspan")
+        //   .style("font-size", "16px")
+        //   .text(d => "\nprofit margin: ");
 
         label.append("tspan")
           .style("font-size", "22px")
-          .text(d => Math.round(rectLabel(d)) + "%");
+          .text(d => Math.round(rectLabel(d)));
       
         // const format = d3.format(",d");
         // const tspan = text.append("tspan")

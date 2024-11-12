@@ -79,16 +79,16 @@ function IcicleTask({ lines, task_data, task_text, task_answers }) {
           .style("font-size", "26px")
           .text(d => d.data.name);
 
-        const label = cell.append("text")
-          .style("user-select", "none")
-          .attr("pointer-events", "none")
-          .attr("x", 15)
-          .attr("y", 80)
-          .attr("fill-opacity", function(d) { return +labelVisible(d) });
+        // const label = cell.append("text")
+        //   .style("user-select", "none")
+        //   .attr("pointer-events", "none")
+        //   .attr("x", 15)
+        //   .attr("y", 80)
+        //   .attr("fill-opacity", function(d) { return +labelVisible(d) });
 
-        label.append("tspan")
-          .style("font-size", "16px")
-          .text(d => "\nper-person energy use:");
+        // label.append("tspan")
+        //   .style("font-size", "16px")
+        //   .text(d => "\nper-person energy use:");
 
         const label2 = cell.append("text")
           .style("user-select", "none")
@@ -99,7 +99,7 @@ function IcicleTask({ lines, task_data, task_text, task_answers }) {
 
         label2.append("tspan")
           .style("font-size", "22px")
-          .text(d => (rectLabel(d)/10).toFixed(1) + " kWh/person");
+          .text(d => (rectLabel(d)/10).toFixed(1));
       
         // const format = d3.format(",d");
         // const tspan = text.append("tspan")

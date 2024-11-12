@@ -61,15 +61,15 @@ function TrainingTaskIcicleEnergy({ task_data, task_text, task_answers }) {
             .style("font-size", "20px")
             .text(d => d.name);
       
-        const label = cell.append("text")
-            .style("user-select", "none")
-            .attr("pointer-events", "none")
-            .attr("x", 15)
-            .attr("y", 60);
+        // const label = cell.append("text")
+        //     .style("user-select", "none")
+        //     .attr("pointer-events", "none")
+        //     .attr("x", 15)
+        //     .attr("y", 60);
   
-        label.append("tspan")
-            .style("font-size", "16px")
-            .text(d => "\nper-person energy use: ");
+        // label.append("tspan")
+        //     .style("font-size", "16px")
+        //     .text(d => "\nper-person energy use: ");
 
         const label2 = cell.append("text")
             .style("user-select", "none")
@@ -79,7 +79,7 @@ function TrainingTaskIcicleEnergy({ task_data, task_text, task_answers }) {
   
           label2.append("tspan")
             .style("font-size", "20px")
-            .text(d => (d.ratio_val/10).toFixed(1) + " kWh/person");
+            .text(d => (d.ratio_val/10).toFixed(1));
 
         // Calculate PosX
         function getPosX(rectWidth, index) {

@@ -81,7 +81,7 @@ const ttask_2_answers = [["/ttask-2", "Company A, Company C, Company B", false],
 const ttask_3_answers = [["/ttask-4", "Company A", true], ["/ttask-3", "Company A, Company B", false], ["/ttask-3", "Company C", false]]
 const ttask_4_answers = [["/ttask-4", "Company A, Company C", false], ["/ttask-5", "Company B, Company C", true], ["/ttask-4", "Company B", false]]
 const ttask_5_answers = [["/ttask-5", "Software Infrastructure", false], ["/ttask-6", "Consumer Electronics", true]]
-const ttask_6_answers = [["/end", "Red", true], ["/ttask-6", "Yellow", false]]
+const ttask_6_answers = [["/end", "Green", true], ["/ttask-6", "Red", false]]
 
 const nl_ttask_1_answers = [["/no-lines-ttask-1", "Company B, Company C, Company A", false], ["/no-lines-ttask-2", "Company A, Company C, Company B", true], ["/no-lines-ttask-1", "Company C, Company A, Company B", false]]
 const nl_ttask_2_answers = [["/no-lines-ttask-2", "Company A, Company C, Company B", false], ["/no-lines-ttask-2", "Company C, Company A, Company B", false], ["/no-lines-ttask-3", "Company B, Company C, Company A", true]]
