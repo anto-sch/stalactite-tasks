@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import { createHashRouter, RouterProvider } from "react-router-dom";
+import { createHashRouter, RouterProvider, Link } from "react-router-dom";
 import StalactitePlot from './StalactitePlot';
 import StalactiteTask from './StalactiteTask';
 import Navbar from './NavBar';
@@ -18,6 +18,7 @@ import TrainingTaskIcicleEnergy from './TrainingTaskIcicleEnergy';
 
 import task_A from './data/task_A.json';
 import task_B from './data/task_B.json';
+import stock_data from './data/stock_data.json';
 import ttask_0 from './data/ttask_0.json';
 import ttask_1 from './data/ttask_1.json';
 import ttask_3 from './data/ttask_3.json';
@@ -29,6 +30,11 @@ import ttask_5_energy from './data/ttask_5_energy.json';
 import icicle from './data/icicle.json';
 import IciclePlot from './IciclePlot';
 
+import line_training_1 from './data/line_training_1.png';
+import line_training_2 from './data/line_training_2.png';
+import line_training_1_en from './data/line_training_1_en.png';
+import line_training_2_en from './data/line_training_2_en.png';
+
 import energy_data_A from './data/exp_datasets/energy_data_A.json';
 import energy_data_B from './data/exp_datasets/energy_data_B.json';
 import energy_data_C from './data/exp_datasets/energy_data_C.json';
@@ -36,7 +42,6 @@ import energy_data_C from './data/exp_datasets/energy_data_C.json';
 import finance_data_A from './data/exp_datasets/finance_data_A.json';
 import finance_data_B from './data/exp_datasets/finance_data_B.json';
 import finance_data_C from './data/exp_datasets/finance_data_C.json';
-
 
 const task_1_text = "Which companies in the Consumer Electronics sector have a profit margin above sector average?"
 const task_2_text = "Which companies in the Consumer Electronics sector have a profit margin below sector average?"
@@ -52,7 +57,9 @@ const ttask_2_text = "Please rank now the boxes from highest to lowest profit ma
 const ttask_3_text = "Typically, investors compare companies within sectors, such as “Software Infrastructure”. As expected, the box of the sector shows the total of sales as its width and the average profit margin in the sector as its height. Note that the total of sales in a sector is just the sum of the sales of all its companies. If you want to compare a company's profit margin to the sector average you need to compare the sector's box height to the company's box height. \n\nWhich of the companies have a profit margin below the sector's average profit margin?"
 const ttask_4_text = "Which of the companies have a profit margin above the sector's average profit margin?\n\nRemember, the box of the sector shows the total of sales as its width and the average profit margin in the sector as its height."
 const ttask_5_text = "Investors group sectors into industries, such as “Technology”. The visualization follows the conventions as before. The total sales of the industry is represented by the width of the industry box. The average profit margin is represented by the height of the industry box.\n\nWhich of the sectors has a profit margin above the industry's average profit margin?"
-const ttask_6_text = "Sometimes, to facilitate the comparison, lines are added to the diagram showing the average profit margins of industry and sectors.\n\nWhich color is the average line for the Technology industry?"
+const ttask_6_text = "To facilitate the comparison, lines are added to the diagram showing the average profit margins of industry and sectors.\n\nWhich color is the average line for the Technology industry?"
+const ttask_8_text = "Investors commonly want to identify poorly performing companies. You can answer the following question by looking at the average line. \n\nWhich companies have a profit margin that is below industry average?"
+const ttask_9_text = "The average line also helps you to identify companies that perform particularly well. \n\nWhich companies have a profit above industry average?"
 
 const i_ttask_0_text = `You are a financial investor using a visualization that allows you to compare the sales and profit margins of several companies. Sales is the company's income in a business year from selling its products. The profit margin is the percentage of sales that the company earns as profit. \n\nIn the visualization, companies are represented by boxes. The width of the box corresponds to the company's sales, the profit margin is written in the box.\n`
 const i_ttask_1_text = "Let's look at an example. The diagram below shows sales and profit margin for three companies. A frequent task of investors is to compare and rank companies with respect to sales or profit margins. Remember, sales is represented by the width of the box, profit margin is written inside of it. \n\nPlease rank the boxes from highest to lowest sales."
@@ -67,7 +74,9 @@ const ttask_2_text_energy = "Please rank now the boxes from highest to lowest pe
 const ttask_3_text_energy = "Typically, utility companies compare apartments within buildings, such as “Beach Road 1010”. As expected, the box of the building shows the total of people living there as its width and the average per-person energy use in the building as its height. Note that the total number of people living in a building is just the sum of the people living in its apartments. If you want to compare an apartment’s per-person energy use to the building average you need to compare the building's box height to the apartment's box height. \n\nWhich of the apartments have a per-person energy use below the sector's average per-person energy use?"
 const ttask_4_text_energy = "Which of the apartments have a per-person energy use above the building's average per-person energy use?\n\nRemember, the box of the building shows the total of people living there as its width and the average per-person energy use in the building as its height."
 const ttask_5_text_energy = "Utility companies group buildings based on the street they are on, such as “Beach Road”. The visualization follows the conventions as before. The total number of people on the street is represented by the width of the street box. The average per-person energy use is represented by the height of the street box.\n\nWhich of the buildings has a per-person energy use above the street's average per-person energy use?"
-const ttask_6_text_energy = "Sometimes, to facilitate the comparison, lines are added to the diagram showing the average per-person energy use of the street and the buildings.\n\nWhich color is the average line for the street called Beach Road?"
+const ttask_6_text_energy = "To facilitate the comparison, lines are added to the diagram showing the average per-person energy use of the street and the buildings.\n\nWhich color is the average line for the street called Beach Road?"
+const ttask_8_text_energy = "Utility companies commonly want to identify households that use more energy than others. You can answer the following question by looking at the average line. \n\nWhich apartment has an energy use that is above building average?"
+const ttask_9_text_energy = "The average line also helps you to identify households that use less energy than others. \n\nWhich apartment has an energy use that is below building average?"
 
 const i_ttask_0_text_energy = `You are a consultant for an energy provider using a visualization that allows you to compare the number of people in an apartment and per-person energy use of several apartments. The per-person energy use are the kWh/person consumed by the apartment in a week. \n\nIn the visualization, apartments are represented by boxes. The width of the box corresponds to the number of people in the and the per-person energy use is written inside the box.\n`
 const i_ttask_1_text_energy = "Let's look at an example. The diagram below shows the number of people in the household and the per-person energy use for three apartments. A frequent task of utility companies is to compare and rank apartments with respect to the number of people living there or per-person energy use. Remember, the number of people is represented by the width, per-person energy use is written inside the box. \n\nPlease rank the boxes from most to least people living in an apartment."
@@ -81,7 +90,9 @@ const ttask_2_answers = [["/ttask-2", "Company A, Company C, Company B", false],
 const ttask_3_answers = [["/ttask-4", "Company A", true], ["/ttask-3", "Company A, Company B", false], ["/ttask-3", "Company C", false]]
 const ttask_4_answers = [["/ttask-4", "Company A, Company C", false], ["/ttask-5", "Company B, Company C", true], ["/ttask-4", "Company B", false]]
 const ttask_5_answers = [["/ttask-5", "Software Infrastructure", false], ["/ttask-6", "Consumer Electronics", true]]
-const ttask_6_answers = [["/end", "Green", true], ["/ttask-6", "Red", false]]
+const ttask_6_answers = [["/ttask-7", "Green", true], ["/ttask-6", "Red", false]]
+const ttask_8_answers = [["/ttask-8", "Company B, Company C", false], ["/ttask-9", "Company A", true], ["/ttask-8", "Company C", false]]
+const ttask_9_answers = [["/ttask-9", "Company A", false], ["/end", "Company B, Company C", true], ["/ttask-9", "Company A, Company C", false]]
 
 const nl_ttask_1_answers = [["/no-lines-ttask-1", "Company B, Company C, Company A", false], ["/no-lines-ttask-2", "Company A, Company C, Company B", true], ["/no-lines-ttask-1", "Company C, Company A, Company B", false]]
 const nl_ttask_2_answers = [["/no-lines-ttask-2", "Company A, Company C, Company B", false], ["/no-lines-ttask-2", "Company C, Company A, Company B", false], ["/no-lines-ttask-3", "Company B, Company C, Company A", true]]
@@ -100,7 +111,9 @@ const ttask_2_answers_energy = [["/ttask-2-energy", "Apartment A, Apartment C, A
 const ttask_3_answers_energy = [["/ttask-4-energy", "Apartment A", true], ["/ttask-3-energy", "Apartment A, Apartment B", false], ["/ttask-3-energy", "Apartment C", false]]
 const ttask_4_answers_energy = [["/ttask-4-energy", "Apartment A, Apartment C", false], ["/ttask-5-energy", "Apartment B, Apartment C", true], ["/ttask-4-energy", "Apartment B", false]]
 const ttask_5_answers_energy = [["/ttask-5-energy", "Beach Road 1009", false], ["/ttask-6-energy", "Beach Road 1010", true]]
-const ttask_6_answers_energy = [["/end", "Red", true], ["/ttask-6-energy", "Yellow", false]]
+const ttask_6_answers_energy = [["/ttask-7-energy", "Red", true], ["/ttask-6-energy", "Yellow", false]]
+const ttask_8_answers_energy = [["/ttask-9-energy", "Apartment B, Apartment C", true], ["/ttask-8-energy", "Apartment A", false], ["/ttask-8-energy", "Apartment C", false]]
+const ttask_9_answers_energy = [["/end", "Apartment A", true], ["/ttask-9-energy", "Apartment B, Apartment C", false], ["/ttask-9-energy", "Apartment A, Apartment C", false]]
 
 const nl_ttask_1_answers_energy = [["/no-lines-ttask-1-energy", "Apartment B, Apartment C, Apartment A", false], ["/no-lines-ttask-2-energy", "Apartment A, Apartment C, Apartment B", true], ["/no-lines-ttask-1-energy", "Apartment C, Apartment A, Apartment B", false]]
 const nl_ttask_2_answers_energy = [["/no-lines-ttask-2-energy", "Apartment A, Apartment C, Apartment B", false], ["/no-lines-ttask-2-energy", "Apartment C, Apartment A, Apartment B", false], ["/no-lines-ttask-3-energy", "Apartment B, Apartment C, Apartment A", true]]
@@ -135,6 +148,10 @@ const router = createHashRouter([
     element: <Navbar/>
   },
   // stalactite plots with lines
+  {
+    path: "/large_data",
+    element: <StalactitePlot hierarchical_data={stock_data} task_text={"Which companies in the Seminconductors industry have a profit margin above sector average?"} task_answers={task_1_a_answers} />
+  },
   {
     path: "/task-1-a-lines",
     element: <StalactitePlot hierarchical_data={task_A} task_text={task_1_text} task_answers={task_1_a_answers} />
@@ -262,8 +279,24 @@ const router = createHashRouter([
     element: <StalactiteTask lines={true} task_data={ttask_5} task_text={ttask_6_text} task_answers={ttask_6_answers} />
   },
   {
+    path: "/ttask-7",
+    element: <div style={{textAlign: "left", padding: "10px 200px", fontSize: "20px"}}><div id="alert" style={{ display: "none", position: "absolute", left: 0, right: 0, top: "300px", marginLeft: "auto", marginRight: "auto", backgroundColor: "#f55d42", color: "white" }}><h3>Not correct! Please try again.</h3></div>
+    <div id="correct" style={{ display: "none", position: "absolute", left: 0, right: 0, top: "300px", marginLeft: "auto", marginRight: "auto", backgroundColor: "#4ccf40", color: "white" }}><h3>Correct!</h3></div>
+    <p>The average line of the sector lets you compare the profit margin of an industry to the average profot margin in the sector. In the same way, you can compare the profit margin of a company to the average profit margin in the industry. </p><img src={line_training_1} style={{width: "415px", height: "169px", marginLeft: "auto", marginRight: "auto", display: "block"}}></img><p>With the average line you can easily see which companies have a <span style={{color: "red"}}>below</span> average profit margin and which have an <span style={{color: "green"}}>above</span> average profit margin.</p><img src={line_training_2} style={{width: "415px", height: "169px", marginLeft: "auto", marginRight: "auto", display: "block"}}></img><div style={{textAlign: "center"}}><Link className="button" to="/ttask-8" style={{marginTop: "30px", width: "100px"}}>Got it!</Link></div></div> 
+  },
+  {
+    path: "/ttask-8",
+    element: <StalactiteTask lines={true} task_data={ttask_3} task_text={ttask_8_text} task_answers={ttask_8_answers} />
+  },
+  {
+    path: "/ttask-9",
+    element: <StalactiteTask lines={true} task_data={ttask_3} task_text={ttask_9_text} task_answers={ttask_9_answers} />
+  },
+  {
     path: "/end",
-    element: <div><div id='correct'></div><h1>You have completed the training! Click 'next' in the bottom right corner to continue.</h1></div> 
+    element: <div><div id="alert" style={{ display: "none", position: "absolute", left: 0, right: 0, top: "300px", marginLeft: "auto", marginRight: "auto", backgroundColor: "#f55d42", color: "white" }}><h3>Not correct! Please try again.</h3></div>
+    <div id="correct" style={{ display: "none", position: "absolute", left: 0, right: 0, top: "300px", marginLeft: "auto", marginRight: "auto", backgroundColor: "#4ccf40", color: "white" }}><h3>Correct!</h3></div>
+    <h1>You have completed the training! Click 'next' in the bottom right corner to continue.</h1></div> 
   },
   // Training for stalactite plots without lines (vis_type 2)
   {
@@ -349,9 +382,23 @@ const router = createHashRouter([
     element: <StalactiteTask lines={true} task_data={ttask_5_energy} task_text={ttask_6_text_energy} task_answers={ttask_6_answers_energy} />
   },
   {
-    path: "/end",
-    element: <div><div id='correct'></div><h1>You have completed the training! Click 'next' in the bottom right corner to continue.</h1></div> 
+    path: "/ttask-7-energy",
+    element: <div style={{textAlign: "left", padding: "10px 200px", fontSize: "20px"}}><div id="alert" style={{ display: "none", position: "absolute", left: 0, right: 0, top: "300px", marginLeft: "auto", marginRight: "auto", backgroundColor: "#f55d42", color: "white" }}><h3>Not correct! Please try again.</h3></div>
+    <div id="correct" style={{ display: "none", position: "absolute", left: 0, right: 0, top: "300px", marginLeft: "auto", marginRight: "auto", backgroundColor: "#4ccf40", color: "white" }}><h3>Correct!</h3></div>
+    <p>The average line of the street lets you compare the energy use of a building to the average energy use on that street. In the same way, you can compare the energy use of an apartment to the average energy use in that building. </p><img src={line_training_1_en} style={{width: "415px", height: "169px", marginLeft: "auto", marginRight: "auto", display: "block"}}></img><p>With the average line you can easily see which apartments have an energy use <span style={{color: "red"}}>below</span> building average and which have an energy use <span style={{color: "green"}}>above</span> building average.</p><img src={line_training_2_en} style={{width: "415px", height: "169px", marginLeft: "auto", marginRight: "auto", display: "block"}}></img><div style={{textAlign: "center"}}><Link className="button" to="/ttask-8-energy" style={{marginTop: "30px", width: "100px"}}>Got it!</Link></div></div> 
   },
+  {
+    path: "/ttask-8-energy",
+    element: <StalactiteTask lines={true} task_data={ttask_3_energy} task_text={ttask_8_text_energy} task_answers={ttask_8_answers_energy} />
+  },
+  {
+    path: "/ttask-9-energy",
+    element: <StalactiteTask lines={true} task_data={ttask_3_energy} task_text={ttask_9_text_energy} task_answers={ttask_9_answers_energy} />
+  },
+  // {
+  //   path: "/end",
+  //   element: <div><div id='correct'></div><h1>You have completed the training! Click 'next' in the bottom right corner to continue.</h1></div> 
+  // },
   // Training for stalactite plots without lines (vis_type 2)
   {
     path: "/no-lines-ttask-0-energy",

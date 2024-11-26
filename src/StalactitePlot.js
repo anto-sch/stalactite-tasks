@@ -71,15 +71,17 @@ function StalactitePlot({ hierarchical_data, lines=true, task_text, task_answers
             })
             .attr("fill-opacity", d => { if (d.depth>2) return 0; else {return 1;}})
             .style("cursor", "pointer")
-            // .on("click", clicked);
+            .on("click", clicked);
+        
+        let line;
         
         if (lines) {
-            const line = cell.filter(function(d) {return d.children}).append("line")
+            line = cell.filter(function(d) {return d.children}).append("line")
                 .attr("x1", 0)
                 .attr("x2", d => rectWidth(d))
                 .attr("y1", d => 2*rectHeight(d)*yScale)
                 .attr("y2", d => 2*rectHeight(d)*yScale)
-                .style("stroke-width", 8)
+                .style("stroke-width", 6)
                 // .style("stroke-dasharray", ("3, 3"))
                 .attr("stroke", d => {
                 if (!d.depth) return color(0);
@@ -97,19 +99,19 @@ function StalactitePlot({ hierarchical_data, lines=true, task_text, task_answers
             .attr("fill-opacity", function(d) { return +labelVisible(d) });
       
         text.append("tspan")
-            .style("font-size", "24px")
+            .style("font-size", "18px")
             .text(d => d.data.name);
-      
-        // const format = d3.format(",d");
+        
+        const format = d3.format(",d");
         // const tspan = text.append("tspan")
         //     .attr("fill-opacity", d => labelVisible(d) * 0.7)
         //     .style("white-space", "pre")
         //     .style("font-size", "20px")
         //     .text(d => `\nSales ${format(d.value)}\nProfit Margin ${format(rectHeight(d))}`);
       
-        // cell.append("title")
-        //     // .text(d => `${d.ancestors().map(d => d.data.name).reverse().join("/")}\n${format(d.value)}`);
-        //     .text(d => `${d.data.name}\nSales ${format(d.value)}\nProfit Margin ${format(rectHeight(d))}`);
+        rect.append("title")
+            // .text(d => `${d.ancestors().map(d => d.data.name).reverse().join("/")}\n${format(d.value)}`);
+            .text(d => `${d.data.name}\nSales ${format(d.value*100000000)} $\nProfit Margin ${format(rectHeight(d))} %`);
 
         // On click, change the focus and transitions it into view.
         let focus = root;
@@ -133,7 +135,13 @@ function StalactitePlot({ hierarchical_data, lines=true, task_text, task_answers
 
             rect.transition(t).attr("width", d => rectWidth(d.target));
             rect.attr("fill-opacity", d => { if (d.depth < 3+depth) { return 1; } else { return 0; } });
-            
+
+            if (lines) {
+                console.log(line)
+                line.transition(t).attr("x2", d => rectWidth(d.target));
+                line.attr("stroke-opacity", d => { if (d.depth < 2+depth) { return 1; } else { return 0; } });
+            }
+
             // line.transition(t).attr("x1", 0);
             // line.transition(t).attr("x2", d => rectWidth(d.target));
             // line.attr("stroke-opacity", d => { if (d.depth < 2+depth && d.depth > depth-1) { return 1; } else { return 0; } });
@@ -143,6 +151,7 @@ function StalactitePlot({ hierarchical_data, lines=true, task_text, task_answers
         }
     
         function rectWidth(d) {
+            console.log(d.depth)
             return d.x1 - d.x0 - Math.min(1, (d.x1 - d.x0) / 2);
         }
 
@@ -179,6 +188,10 @@ function StalactitePlot({ hierarchical_data, lines=true, task_text, task_answers
         svg.selectAll("g")
           .sort((a, b) => d3.ascending(a.height, b.height))
         
+        // cell
+        //     .on("mouseover", mouseover)
+        //     .on("mousemove", mousemove)
+        //     .on("mouseleave", mouseleave)
       },
       [hierarchical_data]
     );

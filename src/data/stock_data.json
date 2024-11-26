@@ -1,0 +1,121 @@
+{
+    "name": "Technology",
+    "children": [
+		{"name": "Software - Infrastructure",
+		"children": [
+			{"name": "MSFT", "add_val": 2541.89993984, "ratio_val": 35.608003 },
+			{"name": "ORCL", "add_val": 538.15001088, "ratio_val": 20.396 },
+			{"name": "ADBE", "add_val": 209.46999296, "ratio_val": 25.588 },
+			{"name": "PLTR", "add_val": 26.46338048, "ratio_val": 18.009000999999998 },
+			{"name": "PANW", "add_val": 80.27500032, "ratio_val": 32.11 },
+			{"name": "SNPS", "add_val": 64.8343808, "ratio_val": 23.111999 },
+			{"name": "CRWD", "add_val": 35.16257024, "ratio_val": 4.84 },
+			{"name": "FTNT", "add_val": 57.10799872, "ratio_val": 26.790002 },
+			{"name": "GPN", "add_val": 100.2432, "ratio_val": 13.611999999999998 },
+			{"name": "GDDY", "add_val": 44.80900096, "ratio_val": 41.335 },
+			{"name": "CPAY", "add_val": 38.77477888, "ratio_val": 26.142 },
+			{"name": "GEN", "add_val": 38.63000064, "ratio_val": 16.153000000000002 },
+			{"name": "VRSN", "add_val": 15.424, "ratio_val": 55.686 },
+			{"name": "FFIV", "add_val": 28.16120064, "ratio_val": 20.125999999999998 },
+			{"name": "AKAM", "add_val": 39.66245888, "ratio_val": 13.266 }
+		]}, 
+		{"name": "Consumer Electronics",
+		"children": [
+			{"name": "AAPL", "add_val": 3910.34994688, "ratio_val": 23.971 }
+		]}, 
+		{"name": "Semiconductors",
+		"children": [
+			{"name": "NVDA", "add_val": 963.07003392, "ratio_val": 55.041002999999996 },
+			{"name": "AVGO", "add_val": 468.14998528, "ratio_val": 10.8830005 },
+			{"name": "AMD", "add_val": 242.95000064, "ratio_val": 7.516 },
+			{"name": "TXN", "add_val": 157.10999552, "ratio_val": 31.601998 },
+			{"name": "QCOM", "add_val": 389.61999872, "ratio_val": 26.029999999999998 },
+			{"name": "MU", "add_val": 251.1099904, "ratio_val": 3.098 },
+			{"name": "ADI", "add_val": 97.00435968, "ratio_val": 17.068 },
+			{"name": "INTC", "add_val": 542.46998016, "ratio_val": -29.423 },
+			{"name": "NXPI", "add_val": 129.2499968, "ratio_val": 20.983 },
+			{"name": "MCHP", "add_val": 54.96600064, "ratio_val": 14.220000999999998 },
+			{"name": "MPWR", "add_val": 20.3944704, "ratio_val": 21.292 },
+			{"name": "ON", "add_val": 73.77900032, "ratio_val": 23.794999999999998 },
+			{"name": "SWKS", "add_val": 43.71800064, "ratio_val": 17.848 },
+			{"name": "QRVO", "add_val": 39.48028928, "ratio_val": -3.5770000000000004 }
+		]}, 
+		{"name": "Software - Application",
+		"children": [
+			{"name": "CRM", "add_val": 364.65000448, "ratio_val": 15.445 },
+			{"name": "NOW", "add_val": 104.64, "ratio_val": 12.767999999999999 },
+			{"name": "INTU", "add_val": 162.8499968, "ratio_val": 18.195 },
+			{"name": "UBER", "add_val": 419.5500032, "ratio_val": 10.491999999999999 },
+			{"name": "ADP", "add_val": 195.22899968, "ratio_val": 19.715 },
+			{"name": "CDNS", "add_val": 43.53906176, "ratio_val": 23.868000000000002 },
+			{"name": "ADSK", "add_val": 58.05000192, "ratio_val": 18.208 },
+			{"name": "ROP", "add_val": 67.75600128, "ratio_val": 21.784 },
+			{"name": "FICO", "add_val": 17.17526016, "ratio_val": 29.858 },
+			{"name": "PAYX", "add_val": 53.10799872, "ratio_val": 31.983998000000003 },
+			{"name": "ANSS", "add_val": 24.67742976, "ratio_val": 23.008 },
+			{"name": "TYL", "add_val": 20.77606016, "ratio_val": 11.3929994 },
+			{"name": "PTC", "add_val": 22.98471936, "ratio_val": 16.372999999999998 },
+			{"name": "PAYC", "add_val": 18.23922048, "ratio_val": 25.779000000000003 },
+			{"name": "DAY", "add_val": 16.94499968, "ratio_val": 3.1220000000000003 }
+		]}, 
+		{"name": "Information Technology Services",
+		"children": [
+			{"name": "ACN", "add_val": 648.96462848, "ratio_val": 11.1940004 },
+			{"name": "IBM", "add_val": 625.7999872, "ratio_val": 10.222000000000001 },
+			{"name": "FI", "add_val": 201.2199936, "ratio_val": 15.222 },
+			{"name": "FIS", "add_val": 100.30999552, "ratio_val": 14.146 },
+			{"name": "IT", "add_val": 61.38409984, "ratio_val": 17.330000000000002 },
+			{"name": "CTSH", "add_val": 194.12000768, "ratio_val": 11.6009995 },
+			{"name": "LDOS", "add_val": 162.77000192, "ratio_val": 7.3660000000000005 },
+			{"name": "BR", "add_val": 64.98599936, "ratio_val": 10.572 },
+			{"name": "CDW", "add_val": 208.31199232, "ratio_val": 5.327 },
+			{"name": "EPAM", "add_val": 46.3684608, "ratio_val": 9.679 },
+			{"name": "JKHY", "add_val": 22.4515712, "ratio_val": 17.785999 }
+		]}, 
+		{"name": "Communication Equipment",
+		"children": [
+			{"name": "CSCO", "add_val": 529.76001024, "ratio_val": 17.730999999999998 },
+			{"name": "MSI", "add_val": 106.54999552, "ratio_val": 14.66 },
+			{"name": "HPE", "add_val": 290.20000256, "ratio_val": 6.392 },
+			{"name": "ZBRA", "add_val": 46.56, "ratio_val": 8.2040004 },
+			{"name": "JNPR", "add_val": 50.34299904, "ratio_val": 4.97 }
+		]}, 
+		{"name": "Semiconductor Equipment & Materials",
+		"children": [
+			{"name": "AMAT", "add_val": 268.5400064, "ratio_val": 27.743000000000002 },
+			{"name": "LRCX", "add_val": 155.91300096, "ratio_val": 26.02 },
+			{"name": "KLAC", "add_val": 102.56832512, "ratio_val": 28.921000000000003 },
+			{"name": "TER", "add_val": 27.3759488, "ratio_val": 18.745 }
+		]}, 
+		{"name": "Computer Hardware",
+		"children": [
+			{"name": "ANET", "add_val": 66.13147136, "ratio_val": 40.293997999999995 },
+			{"name": "DELL", "add_val": 918.3899648, "ratio_val": 4.324999999999999 },
+			{"name": "HPQ", "add_val": 533.20998912, "ratio_val": 5.3319998 },
+			{"name": "NTAP", "add_val": 63.76999936, "ratio_val": 17.014000000000003 },
+			{"name": "WDC", "add_val": 143.48000256, "ratio_val": 2.648 },
+			{"name": "STX", "add_val": 72.64999936, "ratio_val": 11.342 },
+			{"name": "SMCI", "add_val": 149.42854144, "ratio_val": 8.085 }
+		]}, 
+		{"name": "Electronic Components",
+		"children": [
+			{"name": "APH", "add_val": 142.32399872, "ratio_val": 15.403 },
+			{"name": "TEL", "add_val": 158.45000192, "ratio_val": 20.151 },
+			{"name": "GLW", "add_val": 126.1100032, "ratio_val": 1.237 },
+			{"name": "JBL", "add_val": 288.82999296, "ratio_val": 4.8060004 }
+		]}, 
+		{"name": "Scientific & Technical Instruments",
+		"children": [
+			{"name": "GRMN", "add_val": 59.56843008, "ratio_val": 25.480000000000004 },
+			{"name": "KEYS", "add_val": 50.02999808, "ratio_val": 18.249000000000002 },
+			{"name": "FTV", "add_val": 61.952, "ratio_val": 14.355 },
+			{"name": "TDY", "add_val": 55.92699904, "ratio_val": 16.875999999999998 },
+			{"name": "TRMB", "add_val": 36.32300032, "ratio_val": 40.668 }
+		]}, 
+		{"name": "Solar",
+		"children": [
+			{"name": "FSLR", "add_val": 38.5081088, "ratio_val": 32.412997 },
+			{"name": "ENPH", "add_val": 12.5024, "ratio_val": 4.912 }
+		]}
+	]  
+}
