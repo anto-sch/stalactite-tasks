@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/stalactite-tasks/static/css/main.86ad7de5.css",
-    "main.js": "/stalactite-tasks/static/js/main.759f5163.js",
+    "main.js": "/stalactite-tasks/static/js/main.dab9180a.js",
     "static/media/line_training_2.png": "/stalactite-tasks/static/media/line_training_2.08fd1e25404bc5b23b5b.png",
     "static/media/line_training_2_en.png": "/stalactite-tasks/static/media/line_training_2_en.2fc7bf7cf8c86b194cd2.png",
     "index.html": "/stalactite-tasks/index.html",
     "main.86ad7de5.css.map": "/stalactite-tasks/static/css/main.86ad7de5.css.map",
-    "main.759f5163.js.map": "/stalactite-tasks/static/js/main.759f5163.js.map"
+    "main.dab9180a.js.map": "/stalactite-tasks/static/js/main.dab9180a.js.map"
   },
   "entrypoints": [
     "static/css/main.86ad7de5.css",
-    "static/js/main.759f5163.js"
+    "static/js/main.dab9180a.js"
   ]
 }
