@@ -1,0 +1,331 @@
+{
+    "name": "Market",
+    "children":
+	[
+		{
+			"name": "Communication Services",
+			"children": [
+				{
+					"name": "Telecom Services",
+					"children": [
+						{
+							"name": "T",
+							"add_val": 1223.36002048,
+							"ratio_val": 8.9490004
+						},
+						{
+							"name": "VZ",
+							"add_val": 1347.87997696,
+							"ratio_val": 12.988
+						}
+					]
+				},
+				{
+					"name": "Internet Content",
+					"children": [
+						{
+							"name": "GOOG",
+							"add_val": 3200.18011136,
+							"ratio_val": 28.604000000000003
+						},
+						{
+							"name": "META",
+							"add_val": 1645.00996096,
+							"ratio_val": 37.909
+						},
+						{
+							"name": "MTCH",
+							"add_val": 100.79373056,
+							"ratio_val": 15.844
+						}
+					]
+				},
+				{
+					"name": "Entertainment",
+					"children": [
+						{
+							"name": "DIS",
+							"add_val": 925.01999616,
+							"ratio_val": 6.0700003
+						},
+						{
+							"name": "LYV",
+							"add_val": 231.55625984,
+							"ratio_val": 3.871
+						},
+						{
+							"name": "NFLX",
+							"add_val": 390.0096512,
+							"ratio_val": 22.337
+						},
+						{
+							"name": "PARA",
+							"add_val": 288.6700032,
+							"ratio_val": 18.887
+						}
+					]
+				}				
+			]
+		},
+		{
+		"name": "Financials",
+		"children": [
+			{
+			    "name": "Diversified Banks",
+			    "children": [
+			        {
+			            "name": "BAC",
+			            "add_val": 960.66002944,
+			            "ratio_val": 28.243000000000002
+			        },
+			        {
+			            "name": "C",
+			            "add_val": 713.63002368,
+			            "ratio_val": 17.771
+			        },
+			        {
+			            "name": "JPM",
+			            "add_val": 1667.74996992,
+			            "ratio_val": 35.06
+			        },
+			        {
+			            "name": "PNC",
+			            "add_val": 207.65999104,
+			            "ratio_val": 28.359
+			        },
+			        {
+			            "name": "TFC",
+			            "add_val": 114.08,
+			            "ratio_val": 42.234
+			        },
+			        {
+			            "name": "USB",
+			            "add_val": 250.9700096,
+			            "ratio_val": 25.099
+			        },
+			        {
+			            "name": "WFC",
+			            "add_val": 779.62002432,
+			            "ratio_val": 25.296999999999997
+			        }
+			    ]
+			},
+			{
+			    "name": "Life & Health Insurance",
+			    "children": [
+			        {
+			            "name": "AFL",
+			            "add_val": 189.26999552,
+			            "ratio_val": 28.757998
+			        },
+			        {
+			            "name": "MET",
+			            "add_val": 709.8200064,
+			            "ratio_val": 6.235
+			        },
+			        {
+			            "name": "PFG",
+			            "add_val": 161.27699968,
+			            "ratio_val": 9.741
+			        },
+			        {
+			            "name": "PRU",
+			            "add_val": 704.0499712,
+			            "ratio_val": 3.873
+			        }
+			    ]
+			},
+			{
+			    "name": "Property & Casualty Insurance",
+			    "children": [
+			        {
+			            "name": "ACGL",
+			            "add_val": 174.4,
+			            "ratio_val": 24.725
+			        },
+			        {
+			            "name": "ALL",
+			            "add_val": 641.06000384,
+			            "ratio_val": 7.28
+			        },
+			        {
+			            "name": "CB",
+			            "add_val": 567.24000768,
+			            "ratio_val": 16.346
+			        },
+			        {
+			            "name": "CINF",
+			            "add_val": 113.36999936,
+			            "ratio_val": 20.216998
+			        },
+			        {
+			            "name": "HIG",
+			            "add_val": 265.35000064,
+			            "ratio_val": 11.724
+			        },
+			        {
+			            "name": "PGR",
+			            "add_val": 753.43003648,
+			            "ratio_val": 11.254999999999999
+			        },
+			        {
+			            "name": "TRV",
+			            "add_val": 464.2299904,
+			            "ratio_val": 10.767999
+			        },
+			        {
+			            "name": "WRB",
+			            "add_val": 136.38752256,
+			            "ratio_val": 12.876001
+			        }
+			    ]
+			}
+		]
+		},
+		{
+		"name": "Technology",
+		"children": [
+			{
+			    "name": "Semiconductors",
+			    "children": [
+			        {
+			            "name": "ADI",
+			            "add_val": 93.37626624,
+			            "ratio_val": 16.747999
+			        },
+			        {
+			            "name": "AMD",
+			            "add_val": 257.84999936,
+			            "ratio_val": 6.364
+			        },
+			        {
+			            "name": "AVGO",
+			            "add_val": 515.74001664,
+			            "ratio_val": 11.4300005
+			        },
+			        {
+			            "name": "INTC",
+			            "add_val": 531.00998656,
+			            "ratio_val": 35.321000000000005
+			        },
+			        {
+			            "name": "MPWR",
+			            "add_val": 69.07099904,
+			            "ratio_val": 80.952
+			        },
+			        {
+			            "name": "MU",
+			            "add_val": 290.9400064,
+			            "ratio_val": 13.343
+			        },
+			        {
+			            "name": "NVDA",
+			            "add_val": 1132.68998144,
+			            "ratio_val": 55.684999999999995
+			        },
+			        {
+			            "name": "NXPI",
+			            "add_val": 126.13999616,
+			            "ratio_val": 19.899
+			        },
+			        {
+			            "name": "ON",
+			            "add_val": 110.82299904,
+			            "ratio_val": 22.207001
+			        },
+			        {
+			            "name": "QCOM",
+			            "add_val": 406.96000512,
+			            "ratio_val": 25.936002000000002
+			        },
+			        {
+			            "name": "TXN",
+			            "add_val": 156.40999936,
+			            "ratio_val": 30.682
+			        }
+			    ]
+			},
+			{
+			    "name": "Software Infrastructure",
+			    "children": [
+			        {
+			            "name": "CRWD",
+			            "add_val": 87.4042112,
+			            "ratio_val": 3.388
+			        },
+			        {
+			            "name": "FTNT",
+			            "add_val": 159.55800064,
+			            "ratio_val": 29.303
+			        },
+			        {
+			            "name": "GEN",
+			            "add_val": 89.00999936,
+			            "ratio_val": 16.431999
+			        },
+			        {
+			            "name": "MSFT",
+			            "add_val": 2418.02000384,
+			            "ratio_val": 35.428002
+			        },
+			        {
+			            "name": "NOW",
+			            "add_val": 109.83999488,
+			            "ratio_val": 12.973
+			        },
+			        {
+			            "name": "PANW",
+			            "add_val": 85.70500096,
+			            "ratio_val": 14.637
+			        }
+			    ]
+			},
+			{
+			    "name": "Consumer Electronics",
+			    "children": [
+			        {
+			            "name": "AAPL",
+			            "add_val": 3957.60009216,
+			            "ratio_val": 24.295
+			        },
+			        {
+			            "name": "DELL",
+			            "add_val": 939.53998848,
+			            "ratio_val": 4.362
+			        },
+			        {
+			            "name": "HPE",
+			            "add_val": 301.26999552,
+			            "ratio_val": 8.559999999999999
+			        },
+			        {
+			            "name": "HPQ",
+			            "add_val": 535.59001088,
+			            "ratio_val": 5.1810004
+			        },
+			        {
+			            "name": "NTAP",
+			            "add_val": 64.72999936,
+			            "ratio_val": 17.782
+			        },
+			        {
+			            "name": "SMCI",
+			            "add_val": 149.42854144,
+			            "ratio_val": 8.085
+			        },
+			        {
+			            "name": "STX",
+			            "add_val": 80.34999808,
+			            "ratio_val": 14.673
+			        },
+			        {
+			            "name": "WDC",
+			            "add_val": 156.01000448,
+			            "ratio_val": 8.083
+			        }
+			    ]
+			}
+		]
+		}
+	]
+}

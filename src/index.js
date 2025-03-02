@@ -19,6 +19,8 @@ import TrainingTaskIcicleEnergy from './TrainingTaskIcicleEnergy';
 import task_A from './data/task_A.json';
 import task_B from './data/task_B.json';
 import stock_data from './data/stock_data.json';
+import large_stock_data from './data/large_stock_data.json';
+import stock_data_medium from './data/stock_data_medium.json';
 import ttask_0 from './data/ttask_0.json';
 import ttask_1 from './data/ttask_1.json';
 import ttask_3 from './data/ttask_3.json';
@@ -42,6 +44,8 @@ import energy_data_C from './data/exp_datasets/energy_data_C.json';
 import finance_data_A from './data/exp_datasets/finance_data_A.json';
 import finance_data_B from './data/exp_datasets/finance_data_B.json';
 import finance_data_C from './data/exp_datasets/finance_data_C.json';
+import StalactitePlotWide from './StalactitePlotWide';
+import IciclePlotWide from './IciclePlotWide';
 
 const task_1_text = "Which companies in the Consumer Electronics sector have a profit margin above sector average?"
 const task_2_text = "Which companies in the Consumer Electronics sector have a profit margin below sector average?"
@@ -149,8 +153,16 @@ const router = createHashRouter([
   },
   // stalactite plots with lines
   {
-    path: "/large_data",
+    path: "/stock_data",
     element: <StalactitePlot hierarchical_data={stock_data} task_text={"Which companies in the Seminconductors industry have a profit margin above sector average?"} task_answers={task_1_a_answers} />
+  },
+  {
+    path: "/large_stock_data",
+    element: <StalactitePlotWide hierarchical_data={stock_data_medium} task_text={"Which companies in the Seminconductors industry have a profit margin above sector average?"} task_answers={task_1_a_answers} />
+  },
+  {
+    path: "/large_stock_data_icicle",
+    element: <IciclePlotWide hierarchical_data={stock_data_medium} task_text={"Which companies in the Seminconductors industry have a profit margin above sector average?"} task_answers={task_1_a_answers} />
   },
   {
     path: "/task-1-a-lines",
