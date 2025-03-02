@@ -11,9 +11,10 @@ function IciclePlotWide({ hierarchical_data, task_text, task_answers }) {
       
         // Create the color scale.
         // const color = d3.scaleOrdinal(d3.quantize(d3.interpolateRgbBasis([d3.color("hsl(15, 52%, 62%)"), d3.color("hsl(64, 52%, 62%)"), d3.color("hsl(197, 23%, 62%)")]), hierarchical_data.children.length + 2));
-      
-        const color = d3.scaleOrdinal(d3.quantize(d3.interpolateRgbBasis([d3.color("hsl(138, 18%, 58%)"), d3.color("hsl(11, 76%, 58%)"), d3.color("hsl(50, 91%, 44%)"), d3.color("hsl(244, 23%, 57%)")]), 4));
+        // const color = d3.scaleOrdinal(d3.quantize(d3.interpolateRgbBasis([d3.color("hsl(138, 18%, 58%)"), d3.color("hsl(11, 76%, 58%)"), d3.color("hsl(50, 91%, 44%)"), d3.color("hsl(244, 23%, 57%)")]), 4));
 
+        const color = ["hsl(244, 23%, 57%)", "rgb(129, 167, 140)", "rgb(210, 122, 69)", "rgb(214, 180, 10)"]
+        // const color = ["#E8E79AFF", "#8CBF9AFF", "#5FA2A4FF", "#5686ba"]
         // Compute the layout.
         const hierarchy = d3.hierarchy(hierarchical_data)
             .sum(d => d.add_val)
@@ -49,9 +50,9 @@ function IciclePlotWide({ hierarchical_data, task_text, task_answers }) {
             .attr("height", d => d.y1 - d.y0 - 1)
             .attr("width", d => rectWidth(d)-1)
             .attr("fill", d => {
-              if (!d.depth) return color(0);
+              if (!d.depth) return color[0];
               // while (d.depth > 1) d = d.parent;
-              return color(d.depth);
+              return color[d.depth];
               })
             .style("cursor", "pointer")
             .attr("fill-opacity", 1)
@@ -142,18 +143,15 @@ function IciclePlotWide({ hierarchical_data, task_text, task_answers }) {
             let tooltipElement = document.getElementById('tooltip');
             const title = `${d.data.name}` + "<br />" + `Sales $${format(d.value*0.10)}B` + "<br />" + `Profit Margin ${format(rectLabel(d))} %`;
             
-            // if (!element.dataset.title) {
-            //     let titleElement = element.querySelector('title');
-            //     title = titleElement.innerHTML;
-            //     event.target.setAttribute('data-title', title);
-            //     titleElement.parentNode.removeChild(titleElement);
-            // } else {
-            //     title = element.dataset.title;
-            // }
+            const visWidth = document.getElementById('vis').offsetWidth;
+            if (event.pageX > visWidth/2) {
+                tooltipElement.style.left = event.pageX - 100 + 'px';
+            } else {
+                tooltipElement.style.left = event.pageX + 10 + 'px';
+            }
             
             tooltipElement.innerHTML = title;
             tooltipElement.style.display = 'block';
-            tooltipElement.style.left = event.pageX + 10 + 'px';
             tooltipElement.style.top = event.pageY + 10 + 'px';
             tooltipElement.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
             tooltipElement.style.borderRadius = '5px';
@@ -190,7 +188,7 @@ function IciclePlotWide({ hierarchical_data, task_text, task_answers }) {
         {/* <div style={{ marginTop: "50px", paddingBottom: "30px", marginRight: "150px", marginLeft: "150px", textAlign: "center" }}>
             <span style={{ fontSize: "24px", whiteSpace: "pre-line" }}>{task_text}</span>
         </div> */}
-        <div style={{ width: "100%", margin: "auto" }}>
+        <div id="vis" style={{ width: "100%", margin: "auto" }}>
             <svg
             ref={ref}
             // style={{

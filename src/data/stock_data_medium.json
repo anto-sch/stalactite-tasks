@@ -111,6 +111,31 @@
 			    ]
 			},
 			{
+			    "name": "Investment Banking & Brokerage",
+			    "children": [
+			        {
+			            "name": "GS",
+			            "add_val": 521.64001792,
+			            "ratio_val": 27.368
+			        },
+			        {
+			            "name": "MS",
+			            "add_val": 614.96999936,
+			            "ratio_val": 21.773
+			        },
+			        {
+			            "name": "RJF",
+			            "add_val": 132.39000064,
+			            "ratio_val": 16.391
+			        },
+			        {
+			            "name": "SCHW",
+			            "add_val": 196.05999616,
+			            "ratio_val": 30.306998
+			        }
+			    ]
+			},
+			{
 			    "name": "Life & Health Insurance",
 			    "children": [
 			        {
@@ -185,6 +210,31 @@
 		{
 		"name": "Technology",
 		"children": [
+			{
+			    "name": "IT Consulting & Other Services",
+			    "children": [
+			        {
+			            "name": "ACN",
+			            "add_val": 663.61704448,
+			            "ratio_val": 11.408
+			        },
+			        {
+			            "name": "CTSH",
+			            "add_val": 197.36000512,
+			            "ratio_val": 11.350001
+			        },
+			        {
+			            "name": "IBM",
+			            "add_val": 627.53001472,
+			            "ratio_val": 9.5979996
+			        },
+			        {
+			            "name": "IT",
+			            "add_val": 98.67410944,
+			            "ratio_val": 20.003999999999998
+			        }
+			    ]
+			},
 			{
 			    "name": "Semiconductors",
 			    "children": [
