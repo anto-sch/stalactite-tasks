@@ -1,0 +1,211 @@
+{
+    "name": "Portfolio",
+    "children":
+	[
+		{
+			"name": "Communication Services",
+			"children": [
+				{
+					"name": "Telecom Services",
+					"children": [
+						{
+							"name": "T",
+							"add_val": 1223.36002048,
+							"ratio_val": 8.9490004
+						},
+						{
+							"name": "VZ",
+							"add_val": 1347.87997696,
+							"ratio_val": 12.988
+						}
+					]
+				},
+				{
+					"name": "Internet Content",
+					"children": [
+						{
+							"name": "GOOG",
+							"add_val": 2200.18011136,
+							"ratio_val": 18.604000000000003
+						},
+						{
+							"name": "META",
+							"add_val": 1645.00996096,
+							"ratio_val": 24.909
+						},
+						{
+							"name": "MTCH",
+							"add_val": 100.79373056,
+							"ratio_val": 15.844
+						}
+					]
+				},
+				{
+					"name": "Entertainment",
+					"children": [
+						{
+							"name": "DIS",
+							"add_val": 925.01999616,
+							"ratio_val": 6.0700003
+						},
+						{
+							"name": "LYV",
+							"add_val": 231.55625984,
+							"ratio_val": 3.871
+						},
+						{
+							"name": "NFLX",
+							"add_val": 390.0096512,
+							"ratio_val": 22.337
+						},
+						{
+							"name": "PARA",
+							"add_val": 288.6700032,
+							"ratio_val": 18.887
+						}
+					]
+				}				
+			]
+		},
+		{
+		"name": "Financials",
+		"children": [
+			{
+			    "name": "Diversified Banks",
+			    "children": [
+			        {
+			            "name": "BAC",
+			            "add_val": 960.66002944,
+			            "ratio_val": 28.243000000000002
+			        },
+			        {
+			            "name": "C",
+			            "add_val": 713.63002368,
+			            "ratio_val": 17.771
+			        },
+			        {
+			            "name": "JPM",
+			            "add_val": 1667.74996992,
+			            "ratio_val": 25.06
+			        },
+			        {
+			            "name": "PNC",
+			            "add_val": 207.65999104,
+			            "ratio_val": 18.359
+			        },
+			        {
+			            "name": "TFC",
+			            "add_val": 114.08,
+			            "ratio_val": 22.234
+			        },
+			        {
+			            "name": "USB",
+			            "add_val": 250.9700096,
+			            "ratio_val": 25.099
+			        },
+			        {
+			            "name": "WFC",
+			            "add_val": 779.62002432,
+			            "ratio_val": 25.296999999999997
+			        }
+			    ]
+			},
+			{
+			    "name": "Investment Banking & Brokerage",
+			    "children": [
+			        {
+			            "name": "GS",
+			            "add_val": 521.64001792,
+			            "ratio_val": 17.368
+			        },
+			        {
+			            "name": "MS",
+			            "add_val": 614.96999936,
+			            "ratio_val": 21.773
+			        },
+			        {
+			            "name": "RJF",
+			            "add_val": 132.39000064,
+			            "ratio_val": 16.391
+			        },
+			        {
+			            "name": "SCHW",
+			            "add_val": 196.05999616,
+			            "ratio_val": 20.306998
+			        }
+			    ]
+			},
+			{
+			    "name": "Life & Health Insurance",
+			    "children": [
+			        {
+			            "name": "AFL",
+			            "add_val": 189.26999552,
+			            "ratio_val": 28.757998
+			        },
+			        {
+			            "name": "MET",
+			            "add_val": 709.8200064,
+			            "ratio_val": 6.235
+			        },
+			        {
+			            "name": "PFG",
+			            "add_val": 161.27699968,
+			            "ratio_val": 9.741
+			        },
+			        {
+			            "name": "PRU",
+			            "add_val": 704.0499712,
+			            "ratio_val": 3.873
+			        }
+			    ]
+			},
+			{
+			    "name": "Property & Casualty Insurance",
+			    "children": [
+			        {
+			            "name": "ACGL",
+			            "add_val": 174.4,
+			            "ratio_val": 24.725
+			        },
+			        {
+			            "name": "ALL",
+			            "add_val": 641.06000384,
+			            "ratio_val": 7.28
+			        },
+			        {
+			            "name": "CB",
+			            "add_val": 567.24000768,
+			            "ratio_val": 16.346
+			        },
+			        {
+			            "name": "CINF",
+			            "add_val": 113.36999936,
+			            "ratio_val": 20.216998
+			        },
+			        {
+			            "name": "HIG",
+			            "add_val": 265.35000064,
+			            "ratio_val": 11.724
+			        },
+			        {
+			            "name": "PGR",
+			            "add_val": 753.43003648,
+			            "ratio_val": 11.254999999999999
+			        },
+			        {
+			            "name": "TRV",
+			            "add_val": 464.2299904,
+			            "ratio_val": 10.767999
+			        },
+			        {
+			            "name": "WRB",
+			            "add_val": 136.38752256,
+			            "ratio_val": 12.876001
+			        }
+			    ]
+			}
+		]
+		}
+	]
+}

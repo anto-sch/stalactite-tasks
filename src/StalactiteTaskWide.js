@@ -1,10 +1,10 @@
 import { useEffect, useRef } from 'react';
 import React from 'react';
 import * as d3 from 'd3';
-import './StalactiteTask.css'
 import { useNavigate } from "react-router-dom";
 
-function StalactiteTask({ lines, task_data, task_text, task_answers }) {
+function StalactiteTaskWide({ hierarchical_data, lines=true, task_text, task_answers }) {
+
     const navigate = useNavigate();
 
     const ref = useRef();
@@ -12,18 +12,21 @@ function StalactiteTask({ lines, task_data, task_text, task_answers }) {
     useEffect(() => {
         const svg = d3.select(ref.current);
         const width = 1200;
-        const height = 700;
+        const height = 550;
 
-        const yScale = 8;
+        const yScale = 6;
       
         // Create the color scale.
         // const color = d3.scaleOrdinal(d3.quantize(d3.interpolateHslLong(d3.color("hsl(39, 50%, 75%)"), d3.color("hsl(300, 50%, 50%)")), hierarchical_data.children.length + 2));
-        // const color = d3.scaleOrdinal(d3.quantize(d3.interpolateRgbBasis([d3.color("hsl(15, 52%, 62%)"), d3.color("hsl(64, 52%, 62%)"), d3.color("hsl(197, 23%, 62%)")]), task_data.children.length + 2));
-        const color = d3.scaleOrdinal(d3.quantize(d3.interpolateRgbBasis([d3.color("hsl(138, 18%, 58%)"), d3.color("hsl(11, 76%, 58%)"), d3.color("hsl(50, 91%, 44%)")]), 3));
-        
+        // const color = d3.scaleOrdinal(d3.quantize(d3.interpolateRgbBasis([d3.color("hsl(15, 52%, 62%)"), d3.color("hsl(64, 52%, 62%)"), d3.color("hsl(197, 23%, 62%)")]), hierarchical_data.children.length + 2));
+        // 273, 18%, 58% 92, 33%, 47% 272, 17%, 57%
+        // const color = d3.scaleOrdinal(d3.quantize(d3.interpolateRgbBasis([d3.color("hsl(244, 23%, 57%)"), d3.color("hsl(138, 18%, 58%)"), d3.color("hsl(11, 76%, 58%)"), d3.color("hsl(50, 91%, 44%)")]), 4));
 
+        const color = ["hsl(244, 23%, 57%)", "rgb(129, 167, 140)", "rgb(210, 122, 69)", "rgb(214, 180, 10)"]
+        // const color = ["#E8E79AFF", "#8CBF9AFF", "#5FA2A4FF", "#5686ba"]
+        
         // Compute the layout.
-        const hierarchy = d3.hierarchy(task_data)
+        const hierarchy = d3.hierarchy(hierarchical_data)
             .sum(d => d.add_val)
             // .sort((a, b) => b.height - a.height || b.value - a.value);
 
@@ -35,7 +38,7 @@ function StalactiteTask({ lines, task_data, task_text, task_answers }) {
             .attr("viewBox", [0, 0, width, height])
             .attr("width", width)
             .attr("height", height)
-            .attr("style", "max-width: 50%; height: auto; font: 10px sans-serif")
+            .attr("style", "max-width: 100%; height: auto; font: 10px sans-serif")
             // .attr("transform", "scaleY(0.3)");
     
         /*
@@ -51,6 +54,7 @@ function StalactiteTask({ lines, task_data, task_text, task_answers }) {
 
         svg.selectAll("*").remove();
 
+
         root.each(d => d.parent ? d.y0 = rectPosition(d.parent) : d.y0 = 0);
     
         const cell = svg
@@ -63,51 +67,59 @@ function StalactiteTask({ lines, task_data, task_text, task_answers }) {
             .attr("height", d => {return rectHeight(d)*yScale-1})
             .attr("width", d => rectWidth(d)-1)
             .attr("fill", d => {
-            if (!d.depth) return color(0);
+            if (!d.depth) return color[0];
             // while (d.depth > 1) d = d.parent;
-            return color(d.depth);
+            return color[d.depth];
             })
-            .attr("fill-opacity", d => { if (d.depth>2) return 0; else {return 1;}})
+            // .attr("fill-opacity", d => { if (d.depth>2) return 0; else {return 1;}})
+            .attr("fill-opacity", 1)
             .style("cursor", "pointer")
+            .attr("onmouseover", "evt.target.setAttribute('fill-opacity', 0.7);")
+            .attr("onmouseleave", "evt.target.setAttribute('fill-opacity', 1);")
+            .on("mouseover", showTooltip)
+            .on("mouseleave", hideTooltip)
             // .on("click", clicked);
         
+        let line;
+        
         if (lines) {
-            const line = cell.filter(function(d) {return d.children}).append("line")
+            line = cell.filter(function(d) {return d.children}).append("line")
                 .attr("x1", 0)
                 .attr("x2", d => rectWidth(d))
                 .attr("y1", d => 2*rectHeight(d)*yScale)
                 .attr("y2", d => 2*rectHeight(d)*yScale)
-                .style("stroke-width", 8)
+                .style("stroke-width", 4)
                 // .style("stroke-dasharray", ("3, 3"))
                 .attr("stroke", d => {
-                if (!d.depth) return color(0);
+                if (!d.depth) return color[0];
                 // while (d.depth > 1) d = d.parent;
-                return color(d.depth);
+                return color[d.depth];
                 })
-                .attr("stroke-opacity", d => { if (d.depth>1) return 0; else {return 1;}})
+                // .attr("stroke-opacity", d => { if (d.depth>1) return 0; else {return 1;}})
+                .attr("stroke-opacity", 1)
         }
 
         const text = cell.append("text")
             .style("user-select", "none")
             .attr("pointer-events", "none")
             .attr("x", 15)
-            .attr("y", 40)
+            .attr("y", 30)
             .attr("fill-opacity", function(d) { return +labelVisible(d) });
       
         text.append("tspan")
-            .style("font-size", "28px")
+            .style("font-size", "18px")
             .text(d => d.data.name);
-      
-        // const format = d3.format(",d");
+        
+        const format = d3.format(",d");
         // const tspan = text.append("tspan")
         //     .attr("fill-opacity", d => labelVisible(d) * 0.7)
         //     .style("white-space", "pre")
         //     .style("font-size", "20px")
         //     .text(d => `\nSales ${format(d.value)}\nProfit Margin ${format(rectHeight(d))}`);
       
-        // cell.append("title")
+        // rect.append("title")
         //     // .text(d => `${d.ancestors().map(d => d.data.name).reverse().join("/")}\n${format(d.value)}`);
-        //     .text(d => `${d.data.name}\nSales ${format(d.value)}\nProfit Margin ${format(rectHeight(d))}`);
+        //     .text(d => `${d.data.name}\nSales ${format(d.value*100000000)} $\nProfit Margin ${format(rectHeight(d))} %`);
 
         // On click, change the focus and transitions it into view.
         let focus = root;
@@ -131,7 +143,12 @@ function StalactiteTask({ lines, task_data, task_text, task_answers }) {
 
             rect.transition(t).attr("width", d => rectWidth(d.target));
             rect.attr("fill-opacity", d => { if (d.depth < 3+depth) { return 1; } else { return 0; } });
-            
+
+            if (lines) {
+                line.transition(t).attr("x2", d => rectWidth(d.target));
+                line.attr("stroke-opacity", d => { if (d.depth < 2+depth) { return 1; } else { return 0; } });
+            }
+
             // line.transition(t).attr("x1", 0);
             // line.transition(t).attr("x2", d => rectWidth(d.target));
             // line.attr("stroke-opacity", d => { if (d.depth < 2+depth && d.depth > depth-1) { return 1; } else { return 0; } });
@@ -169,28 +186,68 @@ function StalactiteTask({ lines, task_data, task_text, task_answers }) {
             } 
             return position;
         }
+
+        function getTextWidth(text, font) {
+            // re-use canvas object for better performance
+            const canvas = getTextWidth.canvas || (getTextWidth.canvas = document.createElement("canvas"));
+            const context = canvas.getContext("2d");
+            context.font = font;
+            const metrics = context.measureText(text);
+            return metrics.width;
+          }
     
         function labelVisible(d, depth = d.depth) {
-            return d.y1 <= width && d.y0 >= 0 && d.x1 - d.x0 > 150 && depth < 3;
+            return d.y1 <= width && d.y0 >= 0 && d.x1 - d.x0 > getTextWidth(d.data.name, "18pt arial") + 10;
           }
+
+        function showTooltip(event, d) {
+            const format = d3.format(",d");
+
+            let tooltipElement = document.getElementById('tooltip');
+            const title = `${d.data.name}` + "<br />" + `Sales $${format(d.value*0.10)}B` + "<br />" + `Profit Margin ${format(rectHeight(d))} %`;
+            
+            tooltipElement.innerHTML = title;
+            tooltipElement.style.display = 'block';
+
+            const visWidth = document.getElementById('vis').offsetWidth;
+            if (event.pageX > visWidth/2) {
+                tooltipElement.style.left = event.pageX - 100 + 'px';
+            } else {
+                tooltipElement.style.left = event.pageX + 10 + 'px';
+            }
+            tooltipElement.style.top = event.pageY + 10 + 'px';
+            tooltipElement.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+            tooltipElement.style.borderRadius = '5px';
+            tooltipElement.style.padding = '5px';
+            tooltipElement.style.color = 'white';
+        }
+        
+        function hideTooltip() {
+            var tooltip = document.getElementById('tooltip');
+            tooltip.style.display = 'none';
+        }
 
         svg.selectAll("g")
           .sort((a, b) => d3.ascending(a.height, b.height))
         
+        // cell
+        //     .on("mouseover", mouseover)
+        //     .on("mousemove", mousemove)
+        //     .on("mouseleave", mouseleave)
       },
-      [task_data, lines]
+      [hierarchical_data]
     );
 
     function onAnswer(answer) {
         let clockTimeout = null;
 
-        if (!answer[2] && document.getElementById('alert')) {
+        if (!answer[2]) {
             document.getElementById('alert').style.display = 'block'
             clearTimeout(clockTimeout)
             clockTimeout = setTimeout(() => {
             document.getElementById('alert').style.display = 'none'
             }, 1000)
-        } else if (document.getElementById('correct')) {
+        }   else if (document.getElementById('correct')) {
             console.log("correct")
             document.getElementById('correct').style.display = 'block'
             clearTimeout(clockTimeout)
@@ -198,33 +255,57 @@ function StalactiteTask({ lines, task_data, task_text, task_answers }) {
             document.getElementById('correct').style.display = 'none'
             }, 500)
         }
+
         navigate(answer[0]);
     }
 
+    /* Randomize array in-place using Durstenfeld shuffle algorithm */
+    function shuffleArray(array) {
+        for (var i = array.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
+    }
+
+    let answerButtons = [];
+
+    task_answers.map((answer) =>
+        answerButtons.push(<button className="button" onClick={() => onAnswer(answer)}>{answer[1]}</button>)
+    );
+
+    shuffleArray(answerButtons);
+
     return (
         <div style={{ margin: "auto", textAlign: "center" }}>
-            <div id="alert" style={{ display: "none", position: "absolute", left: 0, right: 0, top: "200px", marginLeft: "auto", marginRight: "auto", backgroundColor: "#f55d42", color: "white" }}><h3>Not correct! Please try again.</h3></div>
-            <div id="correct" style={{ display: "none", position: "absolute", left: 0, right: 0, top: "200px", marginLeft: "auto", marginRight: "auto", backgroundColor: "#4ccf40", color: "white" }}><h3>Correct!</h3></div>
-            <div style={{ marginTop: "20px", paddingBottom: "30px", marginRight: "150px", marginLeft: "180px", textAlign: "left" }}>
+        <div id="alert" style={{ display: "none", position: "absolute", left: 0, right: 0, top: "200px", marginLeft: "auto", marginRight: "auto", backgroundColor: "#f55d42", color: "white" }}><h3>Not correct! Please try again.</h3></div>
+        <div id="correct" style={{ display: "none", position: "absolute", left: 0, right: 0, top: "200px", marginLeft: "auto", marginRight: "auto", backgroundColor: "#4ccf40", color: "white" }}><h3>Correct!</h3></div>
+        <div style={{ marginTop: "20px", paddingBottom: "30px", marginRight: "150px", marginLeft: "180px", textAlign: "left" }}>
                 <span style={{ fontSize: "18px", whiteSpace: "pre-line" }}>{task_text}</span>
             </div>
-            <div style={{ width: "75%", margin: "auto" }}>
-                <svg
-                ref={ref}
-                >
-                </svg>
-            </div>
-            {task_answers ? 
+        <div id="vis" style={{ width: "60%", margin: "auto" }}>
+            <svg
+            ref={ref}
+            >
+            </svg>
+            <div id="tooltip" style={{position: "absolute", display: "none"}}></div>
+        </div>
+        {task_answers && task_answers.length > 1 ? 
             <div style={{position: "absolute", left: 0, right: 0, marginLeft: "auto", marginRight: "auto", width: "800px"}}>
                 <button className="button" onClick={() => onAnswer(task_answers[0])}>{task_answers[0][1]}</button>
                 <button className="button" onClick={() => onAnswer(task_answers[1])}>{task_answers[1][1]}</button>
                 { task_answers.length === 3 ? <button className="button" onClick={() => onAnswer(task_answers[2])}>{task_answers[2][1]}</button> : null }
             </div>
-            : null }
+        : task_answers ? 
+        <div style={{position: "absolute", left: 0, right: 0, marginLeft: "auto", marginRight: "auto", width: "800px"}}>
+            <button className="button" onClick={() => onAnswer(task_answers[0])}>{task_answers[0][1]}</button>
         </div>
+        : null }
+    </div>
     );
   }
   
   
-  export default StalactiteTask;
+  export default StalactiteTaskWide;
   

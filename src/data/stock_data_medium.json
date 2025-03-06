@@ -1,5 +1,5 @@
 {
-    "name": "Market",
+    "name": "Portfolio",
     "children":
 	[
 		{
@@ -10,13 +10,13 @@
 					"children": [
 						{
 							"name": "T",
-							"add_val": 1223.36002048,
-							"ratio_val": 8.9490004
+							"add_val": 1123.36002048,
+							"ratio_val": 9.9490004
 						},
 						{
 							"name": "VZ",
-							"add_val": 1347.87997696,
-							"ratio_val": 12.988
+							"add_val": 1447.87997696,
+							"ratio_val": 16.988
 						}
 					]
 				},
@@ -250,7 +250,7 @@
 			        },
 			        {
 			            "name": "AVGO",
-			            "add_val": 515.74001664,
+			            "add_val": 415.74001664,
 			            "ratio_val": 11.4300005
 			        },
 			        {
@@ -260,7 +260,7 @@
 			        },
 			        {
 			            "name": "MPWR",
-			            "add_val": 69.07099904,
+			            "add_val": 169.07099904,
 			            "ratio_val": 80.952
 			        },
 			        {
@@ -335,7 +335,7 @@
 			    "children": [
 			        {
 			            "name": "AAPL",
-			            "add_val": 3957.60009216,
+			            "add_val": 3857.60009216,
 			            "ratio_val": 24.295
 			        },
 			        {
@@ -355,7 +355,7 @@
 			        },
 			        {
 			            "name": "NTAP",
-			            "add_val": 64.72999936,
+			            "add_val": 114.72999936,
 			            "ratio_val": 17.782
 			        },
 			        {
@@ -365,7 +365,7 @@
 			        },
 			        {
 			            "name": "STX",
-			            "add_val": 80.34999808,
+			            "add_val": 130.34999808,
 			            "ratio_val": 14.673
 			        },
 			        {

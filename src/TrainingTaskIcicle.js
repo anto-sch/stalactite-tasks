@@ -109,19 +109,19 @@ function TrainingTaskIcicle({ task_data, task_text, task_answers }) {
 
     return (
         <div style={{ margin: "auto", textAlign: "center" }}>
-            <div id="alert" style={{ display: "none", position: "absolute", left: 0, right: 0, top: "300px", marginLeft: "auto", marginRight: "auto", backgroundColor: "#f55d42", color: "white" }}><h3>Not correct! Please try again.</h3></div>
-            <div id="correct" style={{ display: "none", position: "absolute", left: 0, right: 0, top: "300px", marginLeft: "auto", marginRight: "auto", backgroundColor: "#4ccf40", color: "white" }}><h3>Correct!</h3></div>
+            <div id="alert" style={{ display: "none", position: "absolute", left: 0, right: 0, top: "200px", marginLeft: "auto", marginRight: "auto", backgroundColor: "#f55d42", color: "white" }}><h3>Not correct! Please try again.</h3></div>
+            <div id="correct" style={{ display: "none", position: "absolute", left: 0, right: 0, top: "200px", marginLeft: "auto", marginRight: "auto", backgroundColor: "#4ccf40", color: "white" }}><h3>Correct!</h3></div>
             <div style={{ marginTop: "20px", paddingBottom: "30px", marginRight: "150px", marginLeft: "180px", textAlign: "left" }}>
                 <span style={{ fontSize: "18px", whiteSpace: "pre-line" }}>{task_text}</span>
             </div>
-            {/* <div style={{ width: "75%", margin: "auto" }}> */}
+            <div style={{ width: "40%", margin: "auto" }}>
                 <svg
                 ref={ref}
                 >
                 </svg>
-            {/* </div> */}
+            </div>
             {task_answers ? 
-            <div style={{position: "absolute", left: 0, right: 0, marginLeft: "auto", marginRight: "auto", bottom: "40px", width: "800px"}}>
+            <div style={{position: "absolute", left: 0, right: 0, marginLeft: "auto", marginRight: "auto", width: "900px"}}>
                 <button className="button" onClick={() => onAnswer(task_answers[0])}>{task_answers[0][1]}</button>
                 <button className="button" onClick={() => onAnswer(task_answers[1])}>{task_answers[1][1]}</button>
                 <button className="button" onClick={() => onAnswer(task_answers[2])}>{task_answers[2][1]}</button>

@@ -13,7 +13,7 @@ function IntroIcicle({ task_data, task_text, vis_type }) {
     useEffect(() => {
         const svg = d3.select(ref.current);
         const width = 1200;
-        const height = 900;
+        const height = 500;
       
         const color = d3.color("hsl(15, 52%, 62%)");
 

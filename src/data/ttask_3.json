@@ -1,9 +1,9 @@
 {
     "name": "Software Infrastructure",
     "children": [
-        {"name": "Company A", "add_val": 211.91, "ratio_val": 12},
-        {"name": "Company B", "add_val": 99, "ratio_val": 33},
-        {"name": "Company C", "add_val": 154, "ratio_val": 25}
+        {"name": "MSFT", "add_val": 211.91, "ratio_val": 12},
+        {"name": "FTNT", "add_val": 99, "ratio_val": 33},
+        {"name": "GEN", "add_val": 154, "ratio_val": 25}
     ]
 }
 
